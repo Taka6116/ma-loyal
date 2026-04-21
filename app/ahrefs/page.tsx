@@ -222,7 +222,7 @@ export default function AhrefsPage() {
   }, [fetchData])
 
   const handleWriteArticle = (row: ScoredKeyword) => {
-    const params = new URLSearchParams({ kwTarget: row.keyword, kwPrompt: generateAutoPrompt(row) })
+    const params = new URLSearchParams({ kwTarget: row.keyword, kwPrompt: generateAutoPrompt(row), new: '1' })
     router.push(`/editor?${params.toString()}`)
   }
 

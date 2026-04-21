@@ -47,10 +47,12 @@ export default function ArticleInput({
     if (kwParamsApplied.current) return
     const kwPrompt = searchParams.get('kwPrompt')
     const kwTarget = searchParams.get('kwTarget')
+    const isNew = searchParams.get('new') === '1'
     if (kwPrompt || kwTarget) {
       kwParamsApplied.current = true
-      if (kwPrompt && !prompt) setPrompt(kwPrompt)
-      if (kwTarget && !(article.targetKeyword ?? '').trim()) onTargetKeywordChange(kwTarget)
+      // new=1（KW分析からの新規作成）のときは既存値を無視して上書き
+      if (kwPrompt && (isNew || !prompt)) setPrompt(kwPrompt)
+      if (kwTarget && (isNew || !(article.targetKeyword ?? '').trim())) onTargetKeywordChange(kwTarget)
     }
   }, [searchParams]) // eslint-disable-line react-hooks/exhaustive-deps
 

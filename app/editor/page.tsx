@@ -135,7 +135,9 @@ function EditorContent() {
       }
     }
 
-    const saved = loadState()
+    // new=1 のとき（KW分析などからの新規作成）は前回状態を引き継がない
+    const isNew = searchParams.get('new') === '1'
+    const saved = isNew ? null : loadState()
     if (saved) {
       setArticle({
         ...saved.article,
