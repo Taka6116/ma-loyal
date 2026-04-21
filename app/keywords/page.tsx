@@ -129,7 +129,7 @@ export default function KeywordsPage() {
                 type="text"
                 value={editTitle}
                 onChange={e => setEditTitle(e.target.value)}
-                placeholder="例：ERP導入コラム用"
+                placeholder="例：M&A基礎コラム用"
                 className="w-full px-4 py-2.5 rounded-lg border border-[#D0E3F0] focus:ring-2 focus:ring-[#0A2540]/30 focus:border-[#0A2540] outline-none transition-all text-sm"
               />
             </div>
@@ -140,7 +140,7 @@ export default function KeywordsPage() {
               <textarea
                 value={editContent}
                 onChange={e => setEditContent(e.target.value)}
-                placeholder="例：クラウドERP 導入, NetSuite 導入支援, Dynamics 365 比較, ERP 業務効率化, SaaS 導入 中小企業, アジャイル ERP"
+                placeholder="例：M&A 事業承継, 会社売却 手続き, M&A 中小企業, 事業承継 後継者不足, M&A 費用 相場, 会社譲渡 流れ"
                 className="w-full px-4 py-3 rounded-lg border border-[#D0E3F0] focus:ring-2 focus:ring-[#0A2540]/30 focus:border-[#0A2540] outline-none transition-all text-sm resize-y min-h-[120px]"
               />
             </div>

@@ -20,22 +20,22 @@ export interface TrendKeyword {
 }
 
 const CATEGORIES = [
-  { category: 'ERP全般', patterns: ['erp', '基幹システム', '統合基幹', 'enterprise resource planning'] },
-  { category: 'NetSuite', patterns: ['netsuite', 'ネットスイート', 'oracle netsuite'] },
-  { category: 'Dynamics 365', patterns: ['dynamics', 'dynamics 365', 'dynamics365', 'd365'] },
-  { category: 'Power Platform', patterns: ['power platform', 'power apps', 'power automate', 'power bi', 'power pages'] },
-  { category: 'SaaS導入', patterns: ['saas', 'クラウドerp', 'クラウド導入', 'saas導入', 'クラウド移行'] },
-  { category: 'DX推進', patterns: ['dx', 'デジタルトランスフォーメーション', 'デジタル化', '業務改革'] },
-  { category: '業務効率化', patterns: ['業務効率', '生産性', '自動化', 'rpa', '業務改善', 'ワークフロー'] },
-  { category: '導入・移行', patterns: ['導入', '移行', 'マイグレーション', 'リプレイス', '入れ替え', '刷新'] },
-  { category: '会計・財務', patterns: ['会計', '財務', '経理', '決算', '連結', '管理会計', '原価'] },
-  { category: '販売・在庫', patterns: ['販売管理', '在庫管理', '受注', '発注', '倉庫', 'scm', 'サプライチェーン'] },
-  { category: 'プロジェクト管理', patterns: ['プロジェクト管理', 'pmo', 'プロジェクトリカバリー', '失敗', '立て直し'] },
-  { category: 'アジャイル', patterns: ['アジャイル', 'スクラム', '短納期', 'スプリント'] },
-  { category: 'コスト・費用', patterns: ['コスト', '費用', '価格', '料金', '見積', 'roi', '投資対効果'] },
+  { category: 'M&A全般', patterns: ['m&a', 'エムアンドエー', '合併', '買収', '企業買収', '合併・買収'] },
+  { category: '事業承継', patterns: ['事業承継', '事業引き継ぎ', '後継者', '承継', '引き継ぎ', '経営承継'] },
+  { category: '会社売却', patterns: ['会社売却', '株式譲渡', '事業売却', '売却', '譲渡', '売り手'] },
+  { category: '会社買収', patterns: ['会社買収', '企業買収', '買い手', '譲受', 'バイアウト', '買収先'] },
+  { category: '株価算定', patterns: ['株価算定', '企業価値', 'バリュエーション', '株式評価', '企業評価', '時価総額'] },
+  { category: 'デューデリジェンス', patterns: ['デューデリジェンス', 'dd', 'デューデリ', '調査', 'due diligence'] },
+  { category: '費用・相場', patterns: ['費用', '相場', '手数料', '報酬', '仲介手数料', 'コスト', '成功報酬'] },
+  { category: '手続き・流れ', patterns: ['手続き', '流れ', 'プロセス', 'ステップ', '進め方', 'スケジュール'] },
+  { category: '中小企業M&A', patterns: ['中小企業', '小規模', '零細', 'sme', '中堅企業', '中堅'] },
+  { category: '後継者問題', patterns: ['後継者不足', '後継者問題', '廃業', '跡継ぎ', '引退', '経営者高齢化'] },
+  { category: '業種別M&A', patterns: ['製造業', 'it企業', '建設業', '飲食', '介護', '医療', '物流', '小売'] },
+  { category: '地域別M&A', patterns: ['地方', '東京', '大阪', '名古屋', '地域', '県', '都市'] },
+  { category: '仲介・アドバイザー', patterns: ['仲介', 'アドバイザー', 'fa', 'フィナンシャルアドバイザー', '仲介会社', '仲介業者'] },
   { category: '比較・選定', patterns: ['比較', '選定', '選び方', 'おすすめ', 'ランキング', '違い'] },
-  { category: 'AI・先端技術', patterns: ['ai', '人工知能', 'copilot', '機械学習', 'chatgpt', '生成ai'] },
-  { category: '中堅・中小企業', patterns: ['中堅企業', '中小企業', 'sme', '中堅'] },
+  { category: 'リスク・注意点', patterns: ['リスク', '注意点', '失敗', 'トラブル', '落とし穴', 'デメリット'] },
+  { category: 'PMI・統合', patterns: ['pmi', '統合', '経営統合', 'ポスト', '組織統合', '文化統合'] },
 ]
 
 function detectCategory(keyword: string, ahrefsCategory: string): string {
