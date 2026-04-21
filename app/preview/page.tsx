@@ -64,8 +64,8 @@ function insertCtaBannersForPreview(html: string): string {
 function formatContent(content: string): string {
   const supervisorBlock = getSupervisorBlockHtml(SUPERVISOR_FACE_IMAGE_URL)
 
-  const H2_STYLE = "font-size:20px;font-weight:700;margin:48px 0 16px;padding:14px 20px;background:#222222;color:#fff;border-radius:4px;font-family:'Yu Gothic','YuGothic','Noto Sans JP',sans-serif;"
-  const H3_STYLE = 'font-size:18px;font-weight:400;margin:32px 0 12px;color:#111;'
+  const H2_STYLE = "font-size:20px;font-weight:700;margin:48px 0 16px;padding:14px 16px 14px 20px;background:#FAF8F5;color:#222;border-left:4px solid #9b0000;font-family:'Yu Mincho','YuMincho',serif;letter-spacing:0.03em;"
+  const H3_STYLE = "font-size:17px;font-weight:700;margin:32px 0 12px;color:#222;padding-bottom:8px;border-bottom:1px solid #E8E0D5;font-family:'Yu Mincho','YuMincho',serif;"
   const P_STYLE = 'margin-bottom:1.6em;'
 
   const applyInlineFormatting = (text: string): string =>
@@ -121,13 +121,27 @@ function formatContent(content: string): string {
   let bodyHtml = htmlLines.join('\n')
 
   bodyHtml = bodyHtml
+    // M&A LOYAL CTAリンク変換
     .replace(
-      /導入事例はこちらから\s+https?:\/\/www\.rice-cloud\.info\/casestudy\/?/g,
-      '<a href="https://www.rice-cloud.info/casestudy/" target="_blank" rel="noopener noreferrer" style="color:#3EA8D8;text-decoration:underline;">導入事例はこちらから</a>'
+      /M&amp;A成約実績はこちらから\s+https?:\/\/ma-la\.co\.jp\/result\/?/g,
+      '<a href="https://ma-la.co.jp/result/" target="_blank" rel="noopener noreferrer" style="color:#9b0000;text-decoration:underline;font-weight:700;">M&amp;A成約実績はこちらから</a>'
     )
     .replace(
-      /お問い合わせはこちら\s+https?:\/\/www\.rice-cloud\.info\/contact\/?/g,
-      '<a href="https://www.rice-cloud.info/contact/" target="_blank" rel="noopener noreferrer" style="color:#3EA8D8;text-decoration:underline;">お問い合わせはこちら</a>'
+      /M&A成約実績はこちらから\s+https?:\/\/ma-la\.co\.jp\/result\/?/g,
+      '<a href="https://ma-la.co.jp/result/" target="_blank" rel="noopener noreferrer" style="color:#9b0000;text-decoration:underline;font-weight:700;">M&amp;A成約実績はこちらから</a>'
+    )
+    .replace(
+      /無料相談のお問い合わせはこちら\s+https?:\/\/ma-la\.co\.jp\/inquiry\/?/g,
+      '<a href="https://ma-la.co.jp/inquiry/" target="_blank" rel="noopener noreferrer" style="color:#9b0000;text-decoration:underline;font-weight:700;">無料相談のお問い合わせはこちら</a>'
+    )
+    // 旧RAS URLが残っている場合の変換（念のため）
+    .replace(
+      /導入事例はこちらから\s+https?:\/\/[^\s<]*/g,
+      '<a href="https://ma-la.co.jp/result/" target="_blank" rel="noopener noreferrer" style="color:#9b0000;text-decoration:underline;font-weight:700;">M&amp;A成約実績はこちらから</a>'
+    )
+    .replace(
+      /お問い合わせはこちら\s+https?:\/\/[^\s<]*/g,
+      '<a href="https://ma-la.co.jp/inquiry/" target="_blank" rel="noopener noreferrer" style="color:#9b0000;text-decoration:underline;font-weight:700;">無料相談のお問い合わせはこちら</a>'
     )
 
   bodyHtml = insertCtaBannersForPreview(bodyHtml)
@@ -170,7 +184,7 @@ function PreviewLoading({ title }: { title: string }) {
           width: 48,
           height: 48,
           borderRadius: '50%',
-          background: 'linear-gradient(135deg, #1a2744, #3EA8D8)',
+          background: 'linear-gradient(135deg, #9b0000, #97876A)',
           animation: 'rc-pulse 1.4s ease-in-out infinite',
           marginBottom: 28,
         }}
@@ -180,8 +194,8 @@ function PreviewLoading({ title }: { title: string }) {
         style={{
           fontSize: 15,
           fontWeight: 600,
-          color: '#1a2744',
-          fontFamily: '"Noto Sans JP", sans-serif',
+          color: '#222222',
+          fontFamily: "'Yu Mincho','YuMincho',serif",
           marginBottom: 20,
           animation: 'rc-fade-in 0.5s ease-out',
         }}
@@ -194,7 +208,7 @@ function PreviewLoading({ title }: { title: string }) {
           width: 220,
           height: 3,
           borderRadius: 2,
-          background: '#E8ECF0',
+          background: '#E8E0D5',
           overflow: 'hidden',
           marginBottom: 24,
         }}
@@ -203,7 +217,7 @@ function PreviewLoading({ title }: { title: string }) {
           style={{
             height: '100%',
             borderRadius: 2,
-            background: 'linear-gradient(90deg, #3EA8D8, #1a2744)',
+            background: 'linear-gradient(90deg, #9b0000, #97876A)',
             animation: 'rc-progress 1.8s ease-out forwards',
           }}
         />
@@ -674,12 +688,13 @@ function PreviewContent() {
                     key={tag}
                     style={{
                       display: 'inline-block',
-                      padding: '4px 14px',
-                      borderRadius: 4,
+                      padding: '3px 12px',
+                      borderRadius: 2,
+                      border: '1px solid #97876A',
                       fontSize: 12,
                       fontWeight: 600,
-                      color: 'white',
-                      backgroundColor: '#97876A',
+                      color: '#97876A',
+                      backgroundColor: 'transparent',
                     }}
                   >
                     {tag}
@@ -688,12 +703,13 @@ function PreviewContent() {
               </div>
               <h1
                 style={{
-                  fontSize: 26,
-                  fontWeight: 900,
-                  lineHeight: 1.6,
+                  fontSize: 24,
+                  fontWeight: 700,
+                  lineHeight: 1.7,
                   color: '#111',
                   marginBottom: 12,
-                  fontFamily: '"Noto Sans JP", sans-serif',
+                  fontFamily: "'Yu Mincho','YuMincho',serif",
+                  letterSpacing: '0.02em',
                 }}
               >
                 {title}
@@ -725,27 +741,28 @@ function PreviewContent() {
             {/* 記事本文 */}
             <div
               style={{
-                fontFamily: '"Noto Sans JP", sans-serif',
-                fontSize: 16,
-                lineHeight: 1.9,
+                fontFamily: "'Yu Gothic','YuGothic','Noto Sans JP',sans-serif",
+                fontSize: 15,
+                lineHeight: 2.0,
                 color: '#333',
               }}
               dangerouslySetInnerHTML={{ __html: formattedContent }}
             />
 
             {/* 記事末タグバッジ */}
-            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 48, paddingTop: 24, borderTop: '1px solid #e5e5e5' }}>
+            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 48, paddingTop: 24, borderTop: '1px solid #E8E0D5' }}>
               {['M&A', '事業承継', '売却・譲渡', '中小企業', 'M&Aの基礎'].map(tag => (
                 <span
                   key={tag}
                   style={{
                     display: 'inline-block',
-                    padding: '5px 14px',
-                    borderRadius: 4,
+                    padding: '3px 12px',
+                    borderRadius: 2,
+                    border: '1px solid #97876A',
                     fontSize: 12,
                     fontWeight: 600,
-                    color: 'white',
-                    backgroundColor: '#97876A',
+                    color: '#97876A',
+                    backgroundColor: 'transparent',
                     cursor: 'pointer',
                   }}
                 >

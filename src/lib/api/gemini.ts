@@ -312,21 +312,39 @@ P（結論）→ R（理由）→ E（M&Aロイヤルアドバイザリー事例
     .replace(/\*/g, '')
     .replace(/^#{1,6}\s+/gm, '')
 
-  const titleMatch = text.match(/タイトル：(.+)/)
+  // タイトル抽出：複数パターンで試みる
+  const titleMatch =
+    text.match(/タイトル：(.+)/) ||
+    text.match(/タイトル:(.+)/) ||
+    text.match(/^Title[:：]\s*(.+)/im) ||
+    text.match(/^#\s+(.+)/m)
   const separatorIndex = text.indexOf('---')
 
-  if (!titleMatch && separatorIndex === -1) {
-    throw new Error('生成結果の形式が不正です。再度お試しください。')
+  // タイトルが抽出できた場合、または区切り線がある場合は続行
+  // どちらもない場合は本文全体をコンテンツとして扱う（エラーにしない）
+  let title = titleMatch?.[1]?.trim() || ''
+
+  // タイトルが空の場合、本文1行目から抽出を試みる
+  if (!title) {
+    const firstLine = text.split('\n').find(l => l.trim().length > 5)
+    if (firstLine) {
+      title = firstLine.replace(/^[#\s]+/, '').trim()
+    }
+  }
+  // それでも空ならターゲットKWからタイトルを生成
+  if (!title) {
+    title = targetKeyword
+      ? `${targetKeyword}について`
+      : '（タイトルなし）'
   }
 
-  const title = titleMatch?.[1]?.trim() || '（タイトルなし）'
   let content = separatorIndex >= 0
     ? text.slice(separatorIndex + 3).trim().replace(/^-\s*/, '')
-    : text.replace(/タイトル：.+/, '').trim()
+    : text.replace(/タイトル：.+/, '').replace(/タイトル:.+/, '').trim()
 
   // 本文の先頭にタイトルが残っていれば削除
-  content = content.replace(/^タイトル：[^\n]+\n+/, '').trim()
-  if (title !== '（タイトルなし）' && content.startsWith(title)) {
+  content = content.replace(/^タイトル[：:][^\n]+\n+/, '').trim()
+  if (title && title !== '（タイトルなし）' && content.startsWith(title)) {
     content = content.substring(title.length).trim()
   }
   content = stripPrepLabels(content)
@@ -343,7 +361,7 @@ P（結論）→ R（理由）→ E（M&Aロイヤルアドバイザリー事例
   }
 
   return {
-    title: title || '（タイトルなし）',
+    title: title || (targetKeyword ? `${targetKeyword}について` : '（タイトルなし）'),
     content: content || '',
   }
 }
