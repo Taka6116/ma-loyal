@@ -29,19 +29,25 @@ export default function LayoutWithSidebar({
         "
         style={{ backgroundColor: '#222222', borderColor: '#444444' }}
       >
-        <div className="px-4 py-4 border-b flex items-center justify-center" style={{ borderColor: '#444444' }}>
+        <div className="px-4 py-5 border-b flex flex-col items-center justify-center gap-2" style={{ borderColor: '#3A3A3A' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/ma-loyal-logo.png"
             alt="M&A LOYAL ADVISORY"
-            className="w-[160px] h-auto"
-            style={{ filter: 'brightness(0) invert(1) opacity(0.9)' }}
+            className="w-[130px] h-auto"
+            style={{ filter: 'brightness(0) invert(1)', opacity: 0.92 }}
           />
+          <div
+            className="text-[10px] tracking-[0.2em] text-center"
+            style={{ color: '#C4A0A6', fontFamily: "'Cormorant Garamond', serif", fontWeight: 600 }}
+          >
+            ARTICLE SYSTEM
+          </div>
         </div>
 
         <nav className="flex-1 px-3 py-4 text-sm space-y-6">
           <div>
-            <div className="space-y-1">
+            <div className="space-y-0.5">
               {[
                 { href: '/editor', label: '記事を作成' },
                 { href: '/articles', label: '保存済み記事一覧' },
@@ -57,11 +63,14 @@ export default function LayoutWithSidebar({
                   <Link
                     key={href}
                     href={href}
-                    className="flex items-center px-3 py-2.5 rounded-lg text-[16px] font-semibold transition-all"
+                    className="flex items-center px-3 py-2.5 rounded text-[14px] transition-all"
                     style={{
-                      color: isActive ? '#FFFFFF' : 'rgba(255,255,255,0.75)',
-                      background: isActive ? '#97876A' : 'transparent',
-                      boxShadow: isActive ? 'inset 3px 0 0 #F5F0E8' : 'none',
+                      fontFamily: "'Noto Sans JP', sans-serif",
+                      fontWeight: isActive ? 700 : 400,
+                      letterSpacing: '0.03em',
+                      color: isActive ? '#FFFFFF' : 'rgba(255,255,255,0.65)',
+                      background: isActive ? '#8B1A2A' : 'transparent',
+                      borderLeft: isActive ? '3px solid #C4A0A6' : '3px solid transparent',
                     }}
                   >
                     {label}
@@ -72,10 +81,14 @@ export default function LayoutWithSidebar({
           </div>
         </nav>
 
-        <div className="px-4 py-3 border-t" style={{ borderColor: '#444444' }}>
+        <div className="px-4 py-3 border-t" style={{ borderColor: '#3A3A3A' }}>
           <div className="text-center">
-            <div className="text-[10px] font-bold text-white opacity-50 tracking-widest">MAS</div>
-            <div className="text-[9px] text-white opacity-40 tracking-wide mt-0.5">M&amp;A LOYAL Article System</div>
+            <div
+              className="text-[9px] tracking-widest"
+              style={{ color: 'rgba(196,160,166,0.5)', fontFamily: "'Cormorant Garamond', serif" }}
+            >
+              M&amp;A LOYAL ADVISORY
+            </div>
           </div>
         </div>
       </aside>

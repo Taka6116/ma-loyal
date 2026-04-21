@@ -28,13 +28,14 @@ const config: Config = {
       },
       colors: {
         rc: {
-          primary: "#97876A",
-          "primary-hover": "#7A6B52",
-          "primary-light": "#F5F0E8",
+          primary: "#8B1A2A",
+          "primary-hover": "#6E1221",
+          "primary-light": "#FDF5F6",
           navy: "#222222",
           "navy-light": "#444444",
-          accent: "#97876A",
-          red: "#C0392B",
+          accent: "#B5485A",
+          red: "#8B1A2A",
+          gold: "#97876A",
         },
       },
       fontFamily: {

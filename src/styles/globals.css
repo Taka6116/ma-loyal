@@ -4,20 +4,21 @@
 
 :root {
   /* M&A LOYAL ブランドカラー */
-  --color-primary: #97876A;
-  --color-primary-hover: #7A6B52;
-  --color-primary-light: #F5F0E8;
-  --color-primary-border: #B8A483;
+  --color-primary: #8B1A2A;
+  --color-primary-hover: #6E1221;
+  --color-primary-light: #FDF5F6;
+  --color-primary-border: #C4A0A6;
   --color-navy: #222222;
   --color-navy-light: #444444;
-  --color-accent: #97876A;
-  --color-red: #C0392B;
+  --color-accent: #B5485A;
+  --color-red: #8B1A2A;
   --color-page-bg: #FAF8F5;
   --color-card-bg: #FFFFFF;
   --color-text-main: #222222;
   --color-text-muted: #808080;
-  --color-border: #E8E0D5;
+  --color-border: #E8D5D8;
   --color-success: #16A34A;
+  --color-gold: #97876A;
 }
 
 * {

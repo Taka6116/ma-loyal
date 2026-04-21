@@ -49,10 +49,10 @@ function generateAutoPrompt(row: ScoredKeyword): string {
   else volumeStrategy = '・ニッチキーワード。深い専門知識と具体的な事例で差別化すること'
 
   let kdStrategy = ''
-  if (row.kd <= 10) kdStrategy = '・競合がほぼ不在。基本を丁寧に押さえつつRICE CLOUDの独自事例を入れれば上位表示可能'
-  else if (row.kd <= 30) kdStrategy = '・競合難易度が低い。基本を押さえつつRICE CLOUDの独自視点（アジャイル導入・リカバリー実績）で差別化すれば上位表示の勝算あり'
-  else if (row.kd <= 50) kdStrategy = '・中程度の競合。RICE CLOUDの実体験・具体的数値で既存記事との差別化が必要'
-  else kdStrategy = '・競合が強い領域。RICE CLOUDにしか書けない現場知見・独自データで差別化が必須。一般論は避けること'
+  if (row.kd <= 10) kdStrategy = '・競合がほぼ不在。基本を丁寧に押さえつつM&A LOYALの独自事例を入れれば上位表示可能'
+  else if (row.kd <= 30) kdStrategy = '・競合難易度が低い。基本を押さえつつM&A LOYALの独自視点（オーナーに寄り添う支援・地域密着型M&A）で差別化すれば上位表示の勝算あり'
+  else if (row.kd <= 50) kdStrategy = '・中程度の競合。M&A LOYALの実体験・具体的支援事例で既存記事との差別化が必要'
+  else kdStrategy = '・競合が強い領域。M&A LOYALにしか書けない現場知見・独自データで差別化が必須。一般論は避けること'
 
   let cpcStrategy = ''
   if (row.cpc > 3) cpcStrategy = '\n・CPCが高く商業的意図が強い。CTAへの導線を丁寧に設計し、コンバージョンを意識した構成にすること'
@@ -63,26 +63,26 @@ function generateAutoPrompt(row: ScoredKeyword): string {
   else if (row.trend === 'down') trendNote = '\n・トレンド: 検索需要は下降傾向。エバーグリーンな切り口を推奨'
 
   const categoryIntents: Record<string, string> = {
-    'NetSuite': '\n・Oracle NetSuiteの特徴・強み・他製品との違いを知りたい',
-    'Dynamics 365': '\n・Microsoft Dynamics 365の適用範囲・ライセンス体系を理解したい',
-    'Power Platform': '\n・Power Platform（Power Apps/Automate/BI）で何ができるかを知りたい',
-    'コスト・費用': '\n・ERP導入にかかる費用の相場感・ROIの考え方を知りたい',
-    '比較・選定': '\n・複数のERP製品を比較し、自社に最適なものを選定したい',
-    '導入・移行': '\n・既存システムからの移行手順・リスク・期間を理解したい',
-    '会計・財務': '\n・ERP導入による会計・財務業務の効率化・自動化の具体像を知りたい',
-    '販売・在庫': '\n・販売管理・在庫管理のシステム化で解決できる課題を知りたい',
+    'M&A基礎': '\n・M&Aとは何か、基本的な仕組みと流れを知りたい',
+    '事業承継': '\n・後継者問題を抱えており、事業承継の具体的な方法を知りたい',
+    '売却・譲渡': '\n・会社売却・株式譲渡の手続きや価格の決まり方を理解したい',
+    '買収・投資': '\n・企業買収の進め方とデューデリジェンスの要点を知りたい',
+    'バリュエーション': '\n・自社の企業価値をどう算定するか、相場感を把握したい',
+    '仲介・FA': '\n・M&A仲介とFAの違い、どちらを選ぶべきかを理解したい',
+    'コスト・費用': '\n・M&A手数料の相場感・成功報酬の仕組みを知りたい',
+    '業種別': '\n・自業種のM&A事例と特有の留意点を理解したい',
   }
   const extraIntent = categoryIntents[row.detectedCategory] ?? ''
 
-  return `あなたはBtoB領域に特化したSEO・LLMOに強いコンテンツ戦略コンサルタント兼編集者であり、10年以上の実務経験を持ちます。現在は株式会社RICE CLOUD（ライスクラウド）のマーケティング兼ライターとして、ERP/SaaS導入領域における検索上位記事の制作を担っています。
+  return `あなたはM&A・事業承継・企業売却の仲介に特化したSEO・LLMOに強いコンテンツ戦略コンサルタント兼編集者であり、10年以上の実務経験を持ちます。現在はM&Aロイヤルアドバイザリー（M&A LOYAL ADVISORY）のマーケティング兼ライターとして、M&A・事業承継・企業売却領域における検索上位記事の制作を担っています。
 
-単なる情報整理ではなく、検索意図の解像度を高め、意思決定を前進させる記事設計を行ってください。
+単なる情報整理ではなく、経営者・オーナーの実際の悩みに寄り添い、意思決定を前進させる記事設計を行ってください。
 
 ■目的
 
-・ERP/SaaS導入の非指名検索ユーザーの流入獲得
+・M&A・事業承継・企業売却の非指名検索ユーザーの流入獲得
 ・専門性・信頼性・独自性の担保（E-E-A-T強化）
-・ユーザーの検索意図（ペイン）の「ERP導入の複雑さに圧倒され、失敗を恐れている。何から始めればよいか分からない。」に応える内容にする
+・ユーザーの検索意図（ペイン）の「会社をどう次世代に引き継ぐか、または売却すべきか判断できずにいる」に応える内容にする
 
 ■テーマ
 
@@ -103,24 +103,23 @@ ${kdStrategy}${cpcStrategy}
 
 以下の複数の検索意図を統合して記事を設計すること：
 
-・ERP/SaaS導入とは何かを知りたい（基礎理解）
-・自社に合った導入方法の判断基準がほしい（意思決定）
-・ERP導入で失敗したくない、プロジェクト炎上は回避したい（リスク回避）${extraIntent}
+・M&A・事業承継の基本的な仕組みを知りたい（基礎理解）
+・自社の状況に合った方法の判断基準がほしい（意思決定）
+・失敗したくない、騙されたくない、後悔したくない（リスク回避）${extraIntent}
 
 ■ターゲット
 
-・ERP導入を検討し始めた中堅〜大企業の経営企画・IT部門・DX推進担当者
-・業務改善・基幹システム刷新を視野に入れているが、進め方に不安がある層
-・「何から手をつけるべきか分からない」状態の意思決定初期層
+・事業承継・後継者問題を抱える中小企業オーナー・経営者
+・会社売却や第三者承継を検討し始めたが、何から始めればよいか分からない層
+・M&Aに漠然とした不安・疑問を持つ意思決定初期層
 
 ■必須条件
 
-・AWS S3 data-for-ras/materials_for_rice_cloud/ に格納されているデータを参照し、RICE CLOUDの独自性のある内容に反映すること
-・RICE CLOUDの実務知見・過去プロジェクトの経験をベースに記述すること
+・M&A LOYALの実務知見・過去の支援事例の経験をベースに記述すること
 ・必要に応じて、実際の現場で使われた表現や意思決定の言葉を引用形式で入れること
 ・可能であれば、実務で使われた言葉や現場の意思決定を1〜2文引用すること
-・机上の空論ではなく、「現場で実際に起きている意思決定」をベースに記述すること
-・RICE CLOUDの強みである「アジャイル手法による導入」「プロジェクトリカバリー（他社失敗案件の立て直し）」の内容をどこかに自然な形で入れること
+・机上の空論ではなく、「経営者が実際に直面している意思決定」をベースに記述すること
+・M&A LOYALの強みである「オーナーに寄り添う伴走型支援」「地域密着・中小企業特化のM&A仲介」の内容をどこかに自然な形で入れること
 
 ■構成要件（SEO・LLMO最適化）
 
@@ -134,18 +133,18 @@ ${kdStrategy}${cpcStrategy}
 　- H2：本文の内容に合わせてください
 　- H2：本文の内容に合わせてください
 　- H3：各ポイントを具体的に解説（「1-1. 」形式）
-⑤RICE CLOUDならではの視点（独自性）
+⑤M&A LOYALならではの視点（独自性）
 ⑥まとめ
-⑦CTA（導入事例・相談への自然な導線）
+⑦CTA（無料相談・お問い合わせへの自然な導線）
 ⑧よくある質問（FAQ）— Q. と A. の形式で5つ程度
 
 ■品質要件
 
-・専門性がありながらも読みやすい（IT部門以外の経営層でも理解できるレベル）
+・専門性がありながらも読みやすい（法務・財務の専門家でない経営者でも理解できるレベル）
 ・抽象論ではなく、具体例・示唆を含める
 ・冗長表現は避け、簡潔かつ論理的に
 ・AIっぽさを排除（テンプレ感・不自然な言い回しNG）
-・「近年〜」「DXが叫ばれる中〜」「ERPとは〜」から始まる定型導入は禁止
+・「近年〜」「M&Aが注目される中〜」「M&Aとは〜」から始まる定型導入は禁止
 
 ■SEO・LLMO要件
 
@@ -156,10 +155,7 @@ ${kdStrategy}${cpcStrategy}
 
 ■出力形式
 
-記事本文の最後に以下も必ず出力してください：
-
-・SEOキーワードリスト（主要KW・関連KW・ロングテール）
-・LLMO対策で意識したポイント（簡潔に3つ）`
+記事本文のみ出力してください。メタ情報（関連KW一覧・LLMO対策ポイント等）は出力不要です。`
 }
 
 export default function AhrefsPage() {
@@ -300,8 +296,8 @@ export default function AhrefsPage() {
       onDrop={e => { e.preventDefault(); setDragOver(false); handleUpload(e.dataTransfer.files) }}
     >
       {dragOver && (
-        <div className="fixed inset-0 bg-[#009AE0]/10 border-2 border-dashed border-[#009AE0] rounded-xl z-50 pointer-events-none flex items-center justify-center">
-          <p className="text-[#009AE0] font-semibold text-lg">CSVをドロップしてインポート</p>
+        <div className="fixed inset-0 bg-[#8B1A2A]/10 border-2 border-dashed border-[#8B1A2A] rounded-xl z-50 pointer-events-none flex items-center justify-center">
+          <p className="text-[#8B1A2A] font-semibold text-lg">CSVをドロップしてインポート</p>
         </div>
       )}
 
@@ -323,7 +319,7 @@ export default function AhrefsPage() {
           />
           <button
             type="button"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border-2 border-dashed border-[#D0E3F0] bg-white hover:border-[#009AE0] hover:bg-[#F0F4FF] transition-colors text-sm font-medium text-[#475569] whitespace-nowrap"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border-2 border-dashed border-[#E8D5D8] bg-white hover:border-[#8B1A2A] hover:bg-[#FDF5F6] transition-colors text-sm font-medium text-[#6B4C50] whitespace-nowrap"
           >
             <Upload size={16} className="text-[#94A3B8]" />
             {uploading ? 'アップロード中...' : 'CSVインポート'}
@@ -372,10 +368,10 @@ export default function AhrefsPage() {
       )}
 
       {!loading && !hasData && (
-        <div className="rounded-xl border border-[#D0E3F0] bg-white p-12 text-center">
-          <Upload className="mx-auto text-[#94A3B8] mb-3" size={48} />
-          <p className="text-lg font-bold text-[#1A1A2E] mb-2">データがありません</p>
-          <p className="text-sm text-[#64748B]">
+        <div className="rounded-xl border border-[#E8D5D8] bg-white p-12 text-center">
+          <Upload className="mx-auto text-[#C4A0A6] mb-3" size={48} />
+          <p className="text-lg font-bold text-[#222222] mb-2">データがありません</p>
+          <p className="text-sm text-[#808080]">
             AhrefsからエクスポートしたCSVをアップロードすると、KW分析ダッシュボードが表示されます。
           </p>
         </div>
@@ -407,10 +403,10 @@ export default function AhrefsPage() {
                   onClick={() => setSelectedPriority(selectedPriority === p.key ? 'all' : p.key)}
                   className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors ${
                     selectedPriority === p.key
-                      ? p.key === 3 ? 'bg-amber-500 text-white border-amber-500'
-                        : p.key === 2 ? 'bg-blue-500 text-white border-blue-500'
-                        : 'bg-[#009AE0] text-white border-[#009AE0]'
-                      : 'bg-white text-[#475569] border-[#D0E3F0] hover:border-[#009AE0]'
+                      ? p.key === 3 ? 'bg-[#8B1A2A] text-white border-[#8B1A2A]'
+                        : p.key === 2 ? 'bg-[#B5485A] text-white border-[#B5485A]'
+                        : 'bg-[#8B1A2A] text-white border-[#8B1A2A]'
+                      : 'bg-white text-[#6B4C50] border-[#E8D5D8] hover:border-[#8B1A2A]'
                   }`}
                 >
                   {p.label} ({fmtNum(p.count)})
@@ -426,8 +422,8 @@ export default function AhrefsPage() {
               onClick={() => setSelectedCategory('all')}
               className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors ${
                 selectedCategory === 'all'
-                  ? 'bg-[#009AE0] text-white border-[#009AE0]'
-                  : 'bg-white text-[#475569] border-[#D0E3F0] hover:border-[#009AE0]'
+                  ? 'bg-[#8B1A2A] text-white border-[#8B1A2A]'
+                  : 'bg-white text-[#6B4C50] border-[#E8D5D8] hover:border-[#8B1A2A]'
               }`}
             >
               すべて ({fmtNum(activeData.length)})
@@ -439,8 +435,8 @@ export default function AhrefsPage() {
                 onClick={() => setSelectedCategory(selectedCategory === cc.category ? 'all' : cc.category)}
                 className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors ${
                   selectedCategory === cc.category
-                    ? 'bg-[#009AE0] text-white border-[#009AE0]'
-                    : 'bg-white text-[#475569] border-[#D0E3F0] hover:border-[#009AE0]'
+                    ? 'bg-[#8B1A2A] text-white border-[#8B1A2A]'
+                    : 'bg-white text-[#6B4C50] border-[#E8D5D8] hover:border-[#8B1A2A]'
                 }`}
               >
                 {cc.category} ({fmtNum(cc.count)})
@@ -449,7 +445,7 @@ export default function AhrefsPage() {
           </div>
 
           {/* Tabs */}
-          <div className="flex items-center gap-1 mb-4 border-b border-[#D0E3F0]">
+          <div className="flex items-center gap-1 mb-4 border-b border-[#E8D5D8]">
             {([
               { key: 'opportunity' as TabKey, label: '狙い目KW' },
               { key: 'organic' as TabKey, label: '競合KW' },
@@ -462,13 +458,13 @@ export default function AhrefsPage() {
                 onClick={() => setActiveTab(tab.key)}
                 className={`px-4 py-2.5 text-sm font-semibold transition-colors relative ${
                   activeTab === tab.key
-                    ? 'text-[#009AE0]'
-                    : 'text-[#64748B] hover:text-[#1A1A2E]'
+                    ? 'text-[#8B1A2A]'
+                    : 'text-[#808080] hover:text-[#222222]'
                 }`}
               >
                 {tab.label}
                 {activeTab === tab.key && (
-                  <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#009AE0] rounded-t" />
+                  <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#8B1A2A] rounded-t" />
                 )}
               </button>
             ))}
@@ -482,7 +478,7 @@ export default function AhrefsPage() {
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
               placeholder="キーワードを検索..."
-              className="w-full pl-10 pr-4 py-2.5 text-sm rounded-lg border border-[#D0E3F0] bg-white focus:outline-none focus:ring-2 focus:ring-[#009AE0]/30"
+              className="w-full pl-10 pr-4 py-2.5 text-sm rounded-lg border border-[#E8D5D8] bg-white focus:outline-none focus:ring-2 focus:ring-[#8B1A2A]/20"
             />
           </div>
 
@@ -493,11 +489,11 @@ export default function AhrefsPage() {
             <>
 
               {/* Table */}
-              <div className="rounded-xl border border-[#D0E3F0] bg-white overflow-hidden">
+              <div className="rounded-xl border border-[#E8D5D8] bg-white overflow-hidden">
                 <div className="overflow-x-auto">
                   <table className="w-full text-sm table-fixed">
                     <thead>
-                      <tr className="border-b border-[#D0E3F0] bg-[#F8FAFC]">
+                      <tr className="border-b border-[#E8D5D8] bg-[#FDF5F6]">
                         <th className="text-left py-3 px-4 font-semibold text-[#64748B]" style={{ width: isOrganicTab ? '20%' : '28%' }}>キーワード</th>
                         <th className="text-right py-3 px-4 font-semibold text-[#64748B]" style={{ width: isOrganicTab ? '9%' : '10%' }}>Volume</th>
                         <th className="text-center py-3 px-4 font-semibold text-[#64748B]" style={{ width: isOrganicTab ? '6%' : '7%' }}>KD</th>
@@ -518,7 +514,7 @@ export default function AhrefsPage() {
                       {visible.map((kw, i) => (
                         <tr
                           key={`${kw.keyword}-${i}`}
-                          className="border-b border-[#D0E3F0] hover:bg-[#F8FAFC]/60 transition-colors"
+                          className="border-b border-[#E8D5D8] hover:bg-[#FDF5F6]/60 transition-colors"
                         >
                           <td className="py-3 px-4">
                             <div className="font-semibold text-[#1A1A2E] truncate">{kw.keyword}</div>
@@ -527,7 +523,7 @@ export default function AhrefsPage() {
                                 href={kw.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-[11px] text-[#009AE0] hover:underline truncate block"
+                                className="text-[11px] text-[#8B1A2A] hover:underline truncate block"
                               >
                                 {kw.url.replace(/^https?:\/\//, '').slice(0, 50)}
                               </a>
@@ -551,7 +547,7 @@ export default function AhrefsPage() {
                             <PriorityBadge level={kw.priority} />
                           </td>
                           <td className="py-3 px-4 text-center">
-                            <span className="text-sm font-bold" style={{ color: '#009AE0' }}>
+                            <span className="text-sm font-bold" style={{ color: '#8B1A2A' }}>
                               {kw.opportunityScore}
                             </span>
                           </td>
@@ -579,9 +575,9 @@ export default function AhrefsPage() {
                               type="button"
                               onClick={() => handleWriteArticle(kw)}
                               className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-[11px] font-bold text-white transition-colors whitespace-nowrap"
-                              style={{ backgroundColor: kw.priority === 3 ? '#E67E22' : '#009AE0' }}
-                              onMouseEnter={e => (e.currentTarget.style.backgroundColor = kw.priority === 3 ? '#CF6D17' : '#0080C0')}
-                              onMouseLeave={e => (e.currentTarget.style.backgroundColor = kw.priority === 3 ? '#E67E22' : '#009AE0')}
+                              style={{ backgroundColor: kw.priority === 3 ? '#8B1A2A' : '#B5485A' }}
+                              onMouseEnter={e => (e.currentTarget.style.backgroundColor = kw.priority === 3 ? '#6E1221' : '#943848')}
+                              onMouseLeave={e => (e.currentTarget.style.backgroundColor = kw.priority === 3 ? '#8B1A2A' : '#B5485A')}
                             >
                               <Sparkles size={12} />
                               記事作成
@@ -610,7 +606,7 @@ export default function AhrefsPage() {
                   <button
                     type="button"
                     onClick={() => setShowCount(prev => prev + PAGE_SIZE)}
-                    className="px-6 py-2 rounded-lg text-sm font-medium text-[#009AE0] border border-[#009AE0] hover:bg-[#009AE0]/5 transition-colors"
+                    className="px-6 py-2 rounded-lg text-sm font-medium text-[#8B1A2A] border border-[#8B1A2A] hover:bg-[#8B1A2A]/5 transition-colors"
                   >
                     さらに{Math.min(PAGE_SIZE, filtered.length - showCount)}件表示
                   </button>
@@ -626,16 +622,16 @@ export default function AhrefsPage() {
 
 function SummaryCard({ label, value, accent }: { label: string; value: string; accent?: 'green' | 'blue' | 'purple' | 'amber' }) {
   const styles = {
-    green: 'bg-green-50 border-green-200 text-green-700',
-    blue: 'bg-blue-50 border-blue-200 text-blue-700',
-    purple: 'bg-purple-50 border-purple-200 text-purple-700',
-    amber: 'bg-amber-50 border-amber-200 text-amber-700',
+    green: 'bg-[#F5F0E8] border-[#D5C9B8] text-[#7A6B52]',
+    blue: 'bg-[#FDF5F6] border-[#E8D5D8] text-[#B5485A]',
+    purple: 'bg-[#FDF5F6] border-[#E8D5D8] text-[#8B1A2A]',
+    amber: 'bg-[#FDF5F6] border-[#C4A0A6] text-[#8B1A2A]',
   }
-  const s = accent ? styles[accent] : 'bg-white border-[#D0E3F0] text-[#1A1A2E]'
+  const s = accent ? styles[accent] : 'bg-white border-[#E8D5D8] text-[#222222]'
   const [bgBorder, textColor] = [s.split(' ').slice(0, 2).join(' '), s.split(' ').slice(2).join(' ')]
   return (
     <div className={`rounded-xl border p-4 ${bgBorder}`}>
-      <div className="text-[10px] font-semibold text-[#64748B] uppercase tracking-wider mb-1">{label}</div>
+      <div className="text-[10px] font-semibold text-[#808080] uppercase tracking-wider mb-1">{label}</div>
       <div className={`text-2xl font-bold ${textColor}`}>{value}</div>
     </div>
   )
@@ -643,37 +639,37 @@ function SummaryCard({ label, value, accent }: { label: string; value: string; a
 
 function PriorityBadge({ level }: { level: PriorityLevel }) {
   if (level === 3) return (
-    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-amber-50 text-amber-600 border border-amber-200">
+    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-[#FDF5F6] text-[#8B1A2A] border border-[#C4A0A6]">
       ★★★
     </span>
   )
   if (level === 2) return (
-    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-blue-50 text-blue-600 border border-blue-200">
+    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-[#FDF5F6] text-[#B5485A] border border-[#E8D5D8]">
       ★★
     </span>
   )
   if (level === 1) return (
-    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-50 text-gray-500 border border-gray-200">
+    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-[#FAF8F5] text-[#808080] border border-[#E8E0D5]">
       ★
     </span>
   )
-  return <span className="text-xs text-gray-300">−</span>
+  return <span className="text-xs text-[#C4A0A6]">−</span>
 }
 
 function TrendsTableView({ trends }: { trends: TrendKeyword[] }) {
   if (trends.length === 0) {
     return (
-      <div className="rounded-xl border border-[#D0E3F0] bg-white p-12 text-center text-sm text-[#94A3B8]">
+      <div className="rounded-xl border border-[#E8D5D8] bg-white p-12 text-center text-sm text-[#C4A0A6]">
         トレンドデータがありません。SV trendデータを含むCSVをアップロードしてください。
       </div>
     )
   }
   return (
-    <div className="rounded-xl border border-[#D0E3F0] bg-white overflow-hidden">
+    <div className="rounded-xl border border-[#E8D5D8] bg-white overflow-hidden">
       <div className="overflow-x-auto">
         <table className="w-full text-sm table-fixed">
           <thead>
-            <tr className="border-b border-[#D0E3F0] bg-[#F8FAFC]">
+            <tr className="border-b border-[#E8D5D8] bg-[#FDF5F6]">
               <th className="text-left py-3 px-4 font-semibold text-[#64748B]" style={{ width: '35%' }}>キーワード</th>
               <th className="text-right py-3 px-4 font-semibold text-[#64748B]" style={{ width: '15%' }}>前回Vol</th>
               <th className="text-right py-3 px-4 font-semibold text-[#64748B]" style={{ width: '15%' }}>今回Vol</th>
@@ -683,7 +679,7 @@ function TrendsTableView({ trends }: { trends: TrendKeyword[] }) {
           </thead>
           <tbody>
             {trends.map((t, i) => (
-              <tr key={`${t.keyword}-${i}`} className="border-b border-[#D0E3F0] hover:bg-[#F8FAFC]/60 transition-colors">
+              <tr key={`${t.keyword}-${i}`} className="border-b border-[#E8D5D8] hover:bg-[#FDF5F6]/60 transition-colors">
                 <td className="py-3 px-4">
                   <span className="font-semibold text-[#1A1A2E]">{t.keyword}</span>
                 </td>
