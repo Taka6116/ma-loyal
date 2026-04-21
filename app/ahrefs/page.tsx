@@ -494,12 +494,12 @@ export default function AhrefsPage() {
                   <table className="w-full text-sm table-fixed">
                     <thead>
                       <tr className="border-b border-[#E8D5D8] bg-[#FDF5F6]">
-                        <th className="text-left py-3 px-4 font-semibold text-[#64748B]" style={{ width: isOrganicTab ? '20%' : '28%' }}>キーワード</th>
-                        <th className="text-right py-3 px-4 font-semibold text-[#64748B]" style={{ width: isOrganicTab ? '9%' : '10%' }}>Volume</th>
+                        <th className="text-left py-3 px-4 font-semibold text-[#64748B]" style={{ width: isOrganicTab ? '20%' : '26%' }}>キーワード</th>
+                        <th className="text-right py-3 px-4 font-semibold text-[#64748B]" style={{ width: isOrganicTab ? '9%' : '10%' }}>Vol</th>
                         <th className="text-center py-3 px-4 font-semibold text-[#64748B]" style={{ width: isOrganicTab ? '6%' : '7%' }}>KD</th>
                         <th className="text-right py-3 px-4 font-semibold text-[#64748B]" style={{ width: isOrganicTab ? '7%' : '8%' }}>CPC</th>
                         <th className="text-center py-3 px-4 font-semibold text-[#64748B]" style={{ width: isOrganicTab ? '8%' : '9%' }}>優先度</th>
-                        <th className="text-center py-3 px-4 font-semibold text-[#64748B]" style={{ width: isOrganicTab ? '7%' : '8%' }}>スコア</th>
+                        <th className="text-center py-3 px-4 font-semibold text-[#64748B]" style={{ width: isOrganicTab ? '8%' : '10%' }}>トレンド</th>
                         {isOrganicTab && (
                           <>
                             <th className="text-center py-3 px-4 font-semibold text-[#64748B]" style={{ width: '6%' }}>順位</th>
@@ -547,9 +547,7 @@ export default function AhrefsPage() {
                             <PriorityBadge level={kw.priority} />
                           </td>
                           <td className="py-3 px-4 text-center">
-                            <span className="text-sm font-bold" style={{ color: '#8B1A2A' }}>
-                              {kw.opportunityScore}
-                            </span>
+                            <TrendBadge trend={kw.trend} />
                           </td>
                           {isOrganicTab && (
                             <>
@@ -587,7 +585,7 @@ export default function AhrefsPage() {
                       ))}
                       {visible.length === 0 && (
                         <tr>
-                          <td colSpan={isOrganicTab ? 10 : 8} className="py-12 text-center text-[#94A3B8] text-sm">
+                          <td colSpan={isOrganicTab ? 10 : 7} className="py-12 text-center text-[#94A3B8] text-sm">
                             {activeTab === 'opportunity' && kwScored.length === 0
                               ? 'Keywords ExplorerのCSVをアップロードしてください'
                               : activeTab === 'organic' && organicScored.length === 0
@@ -654,6 +652,27 @@ function PriorityBadge({ level }: { level: PriorityLevel }) {
     </span>
   )
   return <span className="text-xs text-[#C4A0A6]">−</span>
+}
+
+function TrendBadge({ trend }: { trend: 'up' | 'down' | 'stable' }) {
+  if (trend === 'up') return (
+    <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+      <TrendingUp size={11} />
+      UP
+    </span>
+  )
+  if (trend === 'down') return (
+    <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded text-xs font-medium bg-red-50 text-red-500 border border-red-200">
+      <TrendingDown size={11} />
+      DOWN
+    </span>
+  )
+  return (
+    <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded text-xs font-medium bg-gray-50 text-gray-400 border border-gray-200">
+      <Minus size={11} />
+      −
+    </span>
+  )
 }
 
 function TrendsTableView({ trends }: { trends: TrendKeyword[] }) {
