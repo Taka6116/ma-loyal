@@ -22,9 +22,13 @@ const DUMMY_ARTICLES = [
 const SUPERVISOR_FACE_IMAGE_URL = ''
 
 function getPreviewCtaBannerHtml(): string {
-  return `<div style="text-align:center;margin:40px 0;padding:20px;background:#F5F0E8;border-radius:12px;">
-  <p style="font-size:18px;font-weight:700;color:#222222;margin:0 0 12px;">M&Aのご相談はお気軽に</p>
-  <a href="https://ma-la.co.jp/contact/" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:12px 32px;background:#97876A;color:#fff;border-radius:8px;text-decoration:none;font-weight:700;font-size:16px;">お問い合わせはこちら</a>
+  return `<div style="margin:48px 0;padding:28px 32px;background:#9b0000;border-radius:4px;position:relative;overflow:hidden;">
+  <div style="position:relative;z-index:1;">
+    <p style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.8);letter-spacing:0.1em;margin:0 0 4px;font-family:'Yu Gothic','YuGothic',sans-serif;">無料相談</p>
+    <p style="font-size:22px;font-weight:900;color:#fff;margin:0 0 4px;font-family:'Yu Mincho','YuMincho',serif;line-height:1.4;">M&Aの<span style="font-size:28px;">メリット・デメリット</span></p>
+    <p style="font-size:18px;font-weight:700;color:#fff;margin:0 0 20px;font-family:'Yu Mincho','YuMincho',serif;">私と話してみませんか？</p>
+    <a href="https://ma-la.co.jp/inquiry/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:#97876A;color:#fff;border-radius:4px;text-decoration:none;font-weight:700;font-size:14px;font-family:'Yu Gothic','YuGothic',sans-serif;">無料相談のご案内 →</a>
+  </div>
 </div>`
 }
 
@@ -437,133 +441,216 @@ function PreviewContent() {
         style={{
           backgroundColor: '#ffffff',
           borderBottom: '1px solid #E8E0D5',
-          padding: '0 24px',
-          minHeight: 64,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
+          padding: '0',
           position: 'sticky',
           top: 56,
           zIndex: 998,
-          flexWrap: 'nowrap',
-          gap: 16,
         }}
       >
-        <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 8 }}>
-          <div style={{ fontWeight: 900, fontSize: 16, color: '#222222', letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>
-            M&amp;A ROYAL ADVISORY
+        {/* 上段：電話 + CTAボタン */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'flex-end',
+          gap: 12,
+          padding: '8px 32px',
+          borderBottom: '1px solid #F0EBE3',
+        }}>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', marginRight: 8 }}>
+            <a href="tel:03-6269-3040" style={{
+              fontSize: 18,
+              fontWeight: 900,
+              color: '#222222',
+              textDecoration: 'none',
+              fontFamily: "'Yu Mincho','YuMincho',serif",
+              letterSpacing: '0.04em',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+            }}>
+              <svg width="13" height="17" fill="currentColor" viewBox="0 0 11 15"><path d="M2.404 9.364c2.594 4.948 5.507 5.453 6.354 5.009l.22-.116-1.983-3.783-.222.114c-.683.36-1.365-.676-2.239-2.342C3.661 6.58 3.196 5.43 3.88 5.072l.22-.117-1.984-3.782-.22.116c-.848.445-2.085 3.132.509 8.075zm7.775 4.264c.327-.172.147-.548-.04-.903l-1.332-2.54c-.143-.274-.38-.428-.57-.327-.12.063-.401.196-.762.375l1.98 3.774.724-.38zM5.313 4.286c.19-.1.198-.381.056-.657-.143-.276-1.332-2.54-1.332-2.54-.19-.355-.393-.717-.722-.545l-.724.38L4.571 4.7c.352-.196.62-.352.742-.414z"/></svg>
+              03-6269-3040
+            </a>
+            <span style={{ fontSize: 11, color: '#808080', fontWeight: 600, fontFamily: "'Yu Gothic','YuGothic',sans-serif" }}>無料相談はお気軽に</span>
           </div>
-          <div style={{ fontSize: 10, color: '#97876A', fontWeight: 600, letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>
-            M&amp;A・事業承継・売却の仲介
-          </div>
-        </div>
-
-        <nav
-          style={{
-            display: 'flex',
-            gap: 20,
-            fontSize: 13,
-            color: '#222222',
-            fontWeight: 600,
-            flexShrink: 0,
-            whiteSpace: 'nowrap',
-            fontFamily: "'Yu Gothic', 'YuGothic', sans-serif",
-          }}
-        >
-          {[
-            'TOP',
-            '会社案内',
-            'M&Aの流れ',
-            'サービス',
-            'コラム',
-            'お役立ち情報',
-            'お問い合わせ',
-          ].map(item => (
-            <span key={item} style={{ cursor: 'pointer' }}>
-              {item}
-            </span>
-          ))}
-        </nav>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0 }}>
           <a
-            href="https://ma-la.co.jp/contact/"
+            href="https://ma-la.co.jp/inquiry/"
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              backgroundColor: '#97876A',
+              backgroundColor: '#9b0000',
               color: 'white',
-              padding: '10px 20px',
+              padding: '10px 18px',
               borderRadius: 4,
-              border: 'none',
               fontSize: 13,
-              fontWeight: 600,
+              fontWeight: 700,
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
               gap: 6,
               whiteSpace: 'nowrap',
               textDecoration: 'none',
+              fontFamily: "'Yu Gothic','YuGothic',sans-serif",
             }}
           >
-            無料相談はこちら
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
+            ✉ 無料相談フォーム
           </a>
+          <a
+            href="https://ma-la.co.jp/download/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              backgroundColor: '#97876A',
+              color: 'white',
+              padding: '10px 18px',
+              borderRadius: 4,
+              fontSize: 13,
+              fontWeight: 700,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              whiteSpace: 'nowrap',
+              textDecoration: 'none',
+              fontFamily: "'Yu Gothic','YuGothic',sans-serif",
+            }}
+          >
+            ↓ 資料ダウンロード
+          </a>
+        </div>
+        {/* 下段：ロゴ + ナビ */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '0 32px',
+          minHeight: 56,
+        }}>
+          <div style={{ fontWeight: 900, fontSize: 17, color: '#222222', letterSpacing: '0.05em', whiteSpace: 'nowrap', fontFamily: "'Yu Mincho','YuMincho',serif" }}>
+            M&amp;Aロイヤルアドバイザリー
+          </div>
+          <nav style={{
+            display: 'flex',
+            gap: 24,
+            fontSize: 13,
+            color: '#222222',
+            fontWeight: 600,
+            whiteSpace: 'nowrap',
+            fontFamily: "'Yu Mincho','YuMincho',serif",
+          }}>
+            {['当社のM&A仲介', 'サービス紹介', 'M&A成約実績', 'M&A案件', 'M&A情報', '会社概要', 'よくある質問'].map(item => (
+              <span key={item} style={{ cursor: 'pointer', padding: '16px 0', display: 'inline-block' }}>
+                {item}
+              </span>
+            ))}
+          </nav>
         </div>
       </header>
 
-      {/* ファーストビュー（M&A LOYAL コラム詳細） */}
-      <section style={{ backgroundColor: '#FAF8F5', borderBottom: '1px solid #E8E0D5', padding: '32px 0' }}>
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: '0 auto',
-            padding: '0 40px',
-          }}
-        >
-          <h1 style={{ position: 'relative' }}>
-            <span
-              style={{
-                display: 'block',
-                fontSize: 11,
-                color: '#97876A',
-                fontWeight: 700,
-                letterSpacing: '0.12em',
-                fontFamily: "'Yu Gothic', 'YuGothic', sans-serif",
-              }}
-            >
-              M&amp;A COLUMN
-            </span>
-            <span
-              style={{
-                display: 'block',
-                fontSize: 22,
-                fontWeight: 700,
-                color: '#222222',
-                fontFamily: "'Yu Gothic', 'YuGothic', sans-serif",
-                letterSpacing: '0.03em',
-                marginTop: 4,
-              }}
-            >
-              コラム・お役立ち情報
-            </span>
+      {/* ファーストビュー（p-sub-fv 再現：ダークバナー） */}
+      <section style={{
+        backgroundColor: '#222222',
+        padding: '48px 0',
+        width: '100%',
+      }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', padding: '0 40px' }}>
+          <h1 style={{
+            fontSize: 26,
+            fontWeight: 700,
+            color: '#ffffff',
+            fontFamily: "'Yu Mincho','YuMincho',serif",
+            letterSpacing: '0.03em',
+            lineHeight: 1.6,
+            margin: 0,
+          }}>
+            {title}
           </h1>
-          <nav
-            style={{ marginTop: 12, fontSize: 12, color: '#808080', fontFamily: "'Yu Gothic', 'YuGothic', sans-serif" }}
-            aria-label="パンくず"
-          >
-            <span style={{ color: '#97876A', cursor: 'pointer' }}>トップ</span>
-            {' > '}
-            <span style={{ color: '#97876A', cursor: 'pointer' }}>コラム</span>
-            {' > '}
-            <span>
-              {title.length > 40 ? `${title.slice(0, 40)}...` : title}
-            </span>
-          </nav>
         </div>
       </section>
+
+      {/* CTAバナー帯（c-bnr 再現） */}
+      <div style={{
+        backgroundColor: '#FAF8F5',
+        borderBottom: '1px solid #E8E0D5',
+        padding: '16px 40px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: 12,
+      }}>
+        <p style={{
+          fontSize: 13,
+          fontWeight: 700,
+          color: '#9b0000',
+          fontFamily: "'Yu Mincho','YuMincho',serif",
+          margin: 0,
+          letterSpacing: '0.05em',
+        }}>
+          着手金・中間金無料 完全成功報酬型
+        </p>
+        <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+          <a
+            href="https://ma-la.co.jp/inquiry/sellside/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-block',
+              padding: '10px 20px',
+              backgroundColor: '#9b0000',
+              color: '#fff',
+              borderRadius: 4,
+              textDecoration: 'none',
+              fontSize: 13,
+              fontWeight: 700,
+              fontFamily: "'Yu Gothic','YuGothic',sans-serif",
+              lineHeight: 1.4,
+              textAlign: 'center',
+            }}
+          >
+            譲渡・売却・事業承継<br />
+            <span style={{ fontSize: 11 }}>無料相談のご案内</span>
+          </a>
+          <a
+            href="https://ma-la.co.jp/inquiry/buyside/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-block',
+              padding: '10px 20px',
+              backgroundColor: '#97876A',
+              color: '#fff',
+              borderRadius: 4,
+              textDecoration: 'none',
+              fontSize: 13,
+              fontWeight: 700,
+              fontFamily: "'Yu Gothic','YuGothic',sans-serif",
+              lineHeight: 1.4,
+              textAlign: 'center',
+            }}
+          >
+            譲受・買収・成長戦略<br />
+            <span style={{ fontSize: 11 }}>無料相談のご案内</span>
+          </a>
+        </div>
+      </div>
+
+      {/* パンくずリスト（p-single__breadcrumb 再現） */}
+      <div style={{
+        maxWidth: 1100,
+        margin: '0 auto',
+        padding: '12px 24px',
+      }}>
+        <nav style={{ fontSize: 12, color: '#808080', fontFamily: "'Yu Mincho','YuMincho',serif" }} aria-label="パンくず">
+          <span style={{ color: '#9b0000', cursor: 'pointer' }}>HOME</span>
+          <span style={{ margin: '0 6px' }}>&gt;</span>
+          <span style={{ color: '#9b0000', cursor: 'pointer' }}>M&amp;Aとは</span>
+          <span style={{ margin: '0 6px' }}>&gt;</span>
+          <span style={{ color: '#9b0000', cursor: 'pointer' }}>経営・ビジネス</span>
+          <span style={{ margin: '0 6px' }}>&gt;</span>
+          <span>{title.length > 40 ? `${title.slice(0, 40)}...` : title}</span>
+        </nav>
+      </div>
 
       {/* 記事メインコンテンツ（2カラム：メイン + サイドバー） */}
       <section style={{ padding: '0 0 80px' }}>
@@ -689,12 +776,27 @@ function PreviewContent() {
               </span>
             </div>
 
-            {/* こんなお役立ち情報もあります（2カラム） */}
-            <div style={{ marginTop: 48 }}>
-              <h2 style={{ marginBottom: 24, textAlign: 'center', fontSize: 20, fontWeight: 700, color: '#222', fontFamily: '"Noto Sans JP", sans-serif' }}>
-                こんなお役立ち情報もあります
+            {/* 関連記事（p-ma-related 再現） */}
+            <div style={{ marginTop: 64, borderTop: '2px solid #222222', paddingTop: 48 }}>
+              <h2 style={{
+                marginBottom: 8,
+                fontSize: 22,
+                fontWeight: 700,
+                color: '#222',
+                fontFamily: "'Yu Mincho','YuMincho',serif",
+                letterSpacing: '0.04em',
+              }}>
+                関連記事のご案内
               </h2>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 24 }}>
+              <p style={{
+                fontSize: 13,
+                color: '#808080',
+                fontFamily: "'Yu Gothic','YuGothic',sans-serif",
+                marginBottom: 28,
+              }}>
+                M&amp;Aロイヤルアドバイザリーでご用意している関連記事をご紹介いたします。
+              </p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20 }}>
                 {DUMMY_ARTICLES.map((article, i) => (
                   <div
                     key={i}
@@ -702,7 +804,7 @@ function PreviewContent() {
                       backgroundColor: 'white',
                       borderRadius: 4,
                       overflow: 'hidden',
-                      border: '1px solid #e5e5e5',
+                      border: '1px solid #E8E0D5',
                       cursor: 'pointer',
                     }}
                   >
@@ -710,29 +812,60 @@ function PreviewContent() {
                       style={{
                         width: '100%',
                         aspectRatio: '16/9',
-                        backgroundColor: '#f0f4f8',
+                        backgroundColor: '#FAF8F5',
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
                         padding: 24,
-                        borderBottom: '1px solid #e5e5e5',
+                        borderBottom: '1px solid #E8E0D5',
                       }}
                     >
-                      <span style={{ fontSize: 12, fontWeight: 700, color: '#222222', letterSpacing: '0.05em', display: 'block', marginBottom: 4 }}>
-                        M&amp;A ROYAL ADVISORY
+                      <span style={{ fontSize: 12, fontWeight: 700, color: '#222222', letterSpacing: '0.05em', display: 'block', marginBottom: 4, fontFamily: "'Yu Mincho','YuMincho',serif" }}>
+                        M&amp;Aロイヤルアドバイザリー
                       </span>
-                      <span style={{ fontSize: 9, fontWeight: 600, color: '#97876A', letterSpacing: '0.08em' }}>
+                      <span style={{ fontSize: 9, fontWeight: 600, color: '#97876A', letterSpacing: '0.08em', fontFamily: "'Yu Gothic','YuGothic',sans-serif" }}>
                         M&amp;A・事業承継・売却の仲介
                       </span>
                     </div>
-                    <div style={{ padding: 16 }}>
-                      <p style={{ fontWeight: 700, fontSize: 14, lineHeight: 1.6, color: '#111' }}>
+                    <div style={{ padding: '12px 16px 16px' }}>
+                      <span style={{ fontSize: 11, color: '#97876A', fontWeight: 700, fontFamily: "'Yu Gothic','YuGothic',sans-serif" }}>
+                        {article.category}
+                      </span>
+                      <p style={{ fontWeight: 700, fontSize: 14, lineHeight: 1.6, color: '#111', marginTop: 4, fontFamily: "'Yu Mincho','YuMincho',serif" }}>
                         {article.title}
                       </p>
+                      <div style={{ marginTop: 12, display: 'flex', justifyContent: 'flex-end' }}>
+                        <span style={{ fontSize: 12, color: '#9b0000', fontWeight: 700, cursor: 'pointer', fontFamily: "'Yu Gothic','YuGothic',sans-serif" }}>
+                          詳細を見る →
+                        </span>
+                      </div>
                     </div>
                   </div>
                 ))}
+              </div>
+              <div style={{ textAlign: 'center', marginTop: 32 }}>
+                <a
+                  href="https://ma-la.co.jp/m-and-a/all-articles/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    padding: '14px 40px',
+                    backgroundColor: '#9b0000',
+                    color: '#fff',
+                    borderRadius: 4,
+                    textDecoration: 'none',
+                    fontSize: 14,
+                    fontWeight: 700,
+                    fontFamily: "'Yu Gothic','YuGothic',sans-serif",
+                    letterSpacing: '0.05em',
+                  }}
+                >
+                  M&amp;A記事一覧へ →
+                </a>
               </div>
             </div>
           </div>
@@ -813,72 +946,194 @@ function PreviewContent() {
         </div>
       </section>
 
-      {/* フッター */}
-      <footer
-        style={{
-          backgroundColor: '#222',
-          color: 'white',
-          padding: '48px 40px 24px',
-          fontFamily: '"Noto Sans JP", sans-serif',
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: '0 auto',
+      {/* コンタクトセクション（c-contact 再現） */}
+      <div style={{
+        backgroundColor: '#FAF8F5',
+        borderTop: '1px solid #E8E0D5',
+        padding: '64px 40px',
+        fontFamily: "'Yu Gothic','YuGothic',sans-serif",
+      }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', textAlign: 'center' }}>
+          <p style={{ fontSize: 11, fontWeight: 700, color: '#97876A', letterSpacing: '0.15em', marginBottom: 4, fontFamily: "'Yu Mincho','YuMincho',serif" }}>CONTACT</p>
+          <h2 style={{ fontSize: 28, fontWeight: 700, color: '#222', fontFamily: "'Yu Mincho','YuMincho',serif", marginBottom: 8 }}>お問い合わせ</h2>
+          <p style={{ fontSize: 13, color: '#808080', marginBottom: 8, letterSpacing: '0.03em', fontFamily: "'Yu Gothic','YuGothic',sans-serif" }}>Feel free to contact us.</p>
+          <p style={{ fontSize: 14, color: '#333', lineHeight: 1.9, marginBottom: 40, fontFamily: "'Yu Mincho','YuMincho',serif" }}>
+            当社は完全成功報酬ですので、ご相談は無料です。<br />
+            M&amp;Aが最善の選択である場合のみご提案させていただきますので、<br />お気軽にご連絡ください。
+          </p>
+          {/* メインCTA（電話 + 問い合わせフォーム） */}
+          <div style={{
             display: 'flex',
-            justifyContent: 'space-between',
-            marginBottom: 32,
+            justifyContent: 'center',
+            gap: 24,
             flexWrap: 'wrap',
-            gap: 32,
-          }}
-        >
-          <div>
-            <div style={{ fontSize: 16, fontWeight: 900, marginBottom: 8, letterSpacing: '0.05em', color: '#97876A' }}>
-              M&amp;A ROYAL ADVISORY
+            marginBottom: 24,
+          }}>
+            {/* 電話 + フォームボックス */}
+            <div style={{
+              backgroundColor: '#fff',
+              border: '2px solid #E8E0D5',
+              borderRadius: 4,
+              padding: '28px 40px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 12,
+              minWidth: 280,
+            }}>
+              <p style={{ fontSize: 12, fontWeight: 700, color: '#9b0000', letterSpacing: '0.08em', margin: 0, fontFamily: "'Yu Mincho','YuMincho',serif" }}>無料</p>
+              <p style={{ fontSize: 13, color: '#333', fontWeight: 600, margin: 0, fontFamily: "'Yu Gothic','YuGothic',sans-serif" }}>お気軽にご相談ください</p>
+              <a href="tel:03-6269-3040" style={{
+                fontSize: 26,
+                fontWeight: 900,
+                color: '#222',
+                textDecoration: 'none',
+                fontFamily: "'Yu Mincho','YuMincho',serif",
+                letterSpacing: '0.04em',
+              }}>
+                03-6269-3040
+              </a>
+              <p style={{ fontSize: 11, color: '#808080', margin: 0 }}>受付：平日 9:00〜18:00</p>
+              <a
+                href="https://ma-la.co.jp/inquiry/"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  padding: '12px 0',
+                  backgroundColor: '#9b0000',
+                  color: '#fff',
+                  borderRadius: 4,
+                  textDecoration: 'none',
+                  fontSize: 14,
+                  fontWeight: 700,
+                  textAlign: 'center',
+                  marginTop: 8,
+                  fontFamily: "'Yu Gothic','YuGothic',sans-serif",
+                }}
+              >
+                無料相談フォーム →
+              </a>
             </div>
-            <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 8, color: 'white' }}>
-              株式会社M&amp;Aロイヤルアドバイザリー
-            </div>
-            <p style={{ fontSize: 12, opacity: 0.7, lineHeight: 1.8 }}>
-              M&amp;A・事業承継・売却の仲介
+          </div>
+          {/* サブCTA（資料DL + 株価算定） */}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 16, flexWrap: 'wrap' }}>
+            <a
+              href="https://ma-la.co.jp/download/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+                padding: '12px 28px',
+                backgroundColor: '#97876A',
+                color: '#fff',
+                borderRadius: 4,
+                textDecoration: 'none',
+                fontSize: 14,
+                fontWeight: 700,
+                fontFamily: "'Yu Gothic','YuGothic',sans-serif",
+              }}
+            >
+              ↓ 資料ダウンロード
+            </a>
+            <a
+              href="https://ma-la.co.jp/inquiry/stock-valuation/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+                padding: '12px 28px',
+                backgroundColor: '#9b0000',
+                color: '#fff',
+                borderRadius: 4,
+                textDecoration: 'none',
+                fontSize: 14,
+                fontWeight: 700,
+                fontFamily: "'Yu Gothic','YuGothic',sans-serif",
+              }}
+            >
+              株価算定サービス →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* フッターナビ（l-fnav 再現） */}
+      <div style={{
+        backgroundColor: '#222222',
+        color: 'white',
+        padding: '48px 40px 32px',
+        fontFamily: "'Yu Mincho','YuMincho',serif",
+      }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          {/* ロゴ */}
+          <div style={{ marginBottom: 32 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/ma-loyal-logo.png"
+              alt="M&Aロイヤルアドバイザリー"
+              style={{ height: 40, objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: 0.9 }}
+            />
+          </div>
+          {/* ナビリスト */}
+          <div style={{ display: 'flex', gap: 40, flexWrap: 'wrap', marginBottom: 32 }}>
+            {[
+              { label: '当社のM&A仲介', subs: ['当社のビジョン', '選ばれる理由', 'コンサルタント紹介'] },
+              { label: 'サービス紹介', subs: ['成果報酬体系', '譲渡・売却サービス', '譲受・買収サービス'] },
+              { label: 'M&A成約実績', subs: ['M&A事例インタビュー', 'M&A事例一覧', 'M&A業界別事例'] },
+              { label: 'M&A案件', subs: [] },
+              { label: 'M&A情報', subs: ['M&Aとは', '事業承継とは', '業界別M&A'] },
+              { label: '会社概要', subs: ['ご挨拶', '役員紹介', 'プレスリリース'] },
+            ].map(nav => (
+              <div key={nav.label} style={{ minWidth: 120 }}>
+                <p style={{ fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 10, cursor: 'pointer' }}>{nav.label}</p>
+                {nav.subs.map(sub => (
+                  <p key={sub} style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', marginBottom: 6, cursor: 'pointer' }}>{sub}</p>
+                ))}
+              </div>
+            ))}
+          </div>
+          {/* M&A仲介協会 */}
+          <div style={{
+            borderTop: '1px solid rgba(255,255,255,0.15)',
+            paddingTop: 24,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 16,
+          }}>
+            <div style={{ width: 2, height: 40, backgroundColor: '#97876A', flexShrink: 0 }} />
+            <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>
+              M&amp;Aロイヤルアドバイザリーは、<br />
+              一般社団法人 M&amp;A仲介協会の正会員です。
             </p>
           </div>
-          <nav
-            style={{
-              display: 'flex',
-              gap: 24,
-              fontSize: 13,
-              opacity: 0.8,
-              flexWrap: 'wrap',
-              alignItems: 'flex-start',
-            }}
-          >
-            {['TOP', '会社案内', 'M&Aの流れ', 'サービス', 'コラム', 'お役立ち情報', 'お問い合わせ'].map(item => (
-              <span key={item} style={{ cursor: 'pointer' }}>{item}</span>
-            ))}
-          </nav>
+          {/* 個人情報 + セキュリティ */}
+          <div style={{ marginTop: 20, display: 'flex', gap: 24, fontSize: 12, color: 'rgba(255,255,255,0.5)' }}>
+            <span style={{ cursor: 'pointer' }}>個人情報保護について</span>
+            <span style={{ cursor: 'pointer' }}>情報セキュリティ方針</span>
+          </div>
         </div>
-        <div style={{ display: 'flex', gap: 24, fontSize: 12, opacity: 0.7, marginBottom: 16 }}>
-          <span style={{ cursor: 'pointer' }}>プライバシーポリシー</span>
-          <span style={{ cursor: 'pointer' }}>情報セキュリティ基本方針</span>
+      </div>
+
+      {/* フッター（l-footer 再現） */}
+      <footer
+        style={{
+          backgroundColor: '#1a1a1a',
+          borderTop: '1px solid rgba(255,255,255,0.08)',
+          padding: '16px 40px',
+          fontFamily: "'Yu Gothic','YuGothic',sans-serif",
+        }}
+      >
+        <div style={{ maxWidth: 1100, margin: '0 auto', textAlign: 'center' }}>
+          <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', margin: 0 }}>
+            &copy; 2024 M&amp;A LOYAL ADVISORY Co.,Ltd
+          </p>
         </div>
-        <hr
-          style={{
-            border: 'none',
-            borderTop: '1px solid rgba(255,255,255,0.15)',
-            marginBottom: 16,
-          }}
-        />
-        <p
-          style={{
-            textAlign: 'center',
-            fontSize: 12,
-            opacity: 0.5,
-          }}
-        >
-          &copy; M&amp;A Royal Advisory All Rights Reserved.
-        </p>
       </footer>
         </div>
         {!isPublishedPreview && (
