@@ -14,8 +14,8 @@ const config: Config = {
     extend: {
       keyframes: {
         "loader-ring": {
-          "0%, 100%": { boxShadow: "0 0 0 0 rgba(0, 154, 224, 0.35)" },
-          "50%": { boxShadow: "0 0 0 7px rgba(0, 154, 224, 0)" },
+          "0%, 100%": { boxShadow: "0 0 0 0 rgba(151, 135, 106, 0.35)" },
+          "50%": { boxShadow: "0 0 0 7px rgba(151, 135, 106, 0)" },
         },
         "loader-dot-soft": {
           "0%, 100%": { opacity: "0.35", transform: "scale(0.92)" },
@@ -28,17 +28,17 @@ const config: Config = {
       },
       colors: {
         rc: {
-          primary: "#009AE0",
-          "primary-hover": "#0080C0",
-          "primary-light": "#E6F5FC",
-          navy: "#0A2540",
-          "navy-light": "#163A5F",
-          accent: "#00B4D8",
-          red: "#E63946",
+          primary: "#97876A",
+          "primary-hover": "#7A6B52",
+          "primary-light": "#F5F0E8",
+          navy: "#222222",
+          "navy-light": "#444444",
+          accent: "#97876A",
+          red: "#C0392B",
         },
       },
       fontFamily: {
-        sans: ["Noto Sans JP", "sans-serif"],
+        sans: ["Yu Gothic", "YuGothic", "Noto Sans JP", "sans-serif"],
         mono: ["DM Mono", "monospace"],
       },
     },

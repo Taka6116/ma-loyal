@@ -14,7 +14,7 @@ export default function LayoutWithSidebar({
 
   if (isLogin) {
     return (
-      <div className="flex-1 flex items-center justify-center min-h-screen bg-[#F0F7FC] px-4">
+      <div className="flex-1 flex items-center justify-center min-h-screen bg-[#FAF8F5] px-4">
         {children}
       </div>
     )
@@ -27,12 +27,12 @@ export default function LayoutWithSidebar({
           fixed top-0 left-0 h-screen w-[220px] flex-shrink-0 z-40
           text-white border-r flex flex-col
         "
-        style={{ backgroundColor: '#009AE0', borderColor: '#0088CC' }}
+        style={{ backgroundColor: '#222222', borderColor: '#444444' }}
       >
-        <div className="px-5 py-4 border-b" style={{ borderColor: '#0088CC' }}>
-          <div className="text-[23px] font-bold tracking-wide">RAS</div>
-          <div className="text-[14px] text-white font-mono mt-0.5">
-            Rice Cloud Article System
+        <div className="px-5 py-4 border-b" style={{ borderColor: '#444444' }}>
+          <div className="text-[20px] font-bold tracking-wide leading-tight">MAS</div>
+          <div className="text-[11px] text-white opacity-80 mt-0.5" style={{ letterSpacing: '0.04em' }}>
+            M&amp;A LOYAL Article System
           </div>
         </div>
 
@@ -56,9 +56,9 @@ export default function LayoutWithSidebar({
                     href={href}
                     className="flex items-center px-3 py-2.5 rounded-lg text-[16px] font-semibold transition-all"
                     style={{
-                      color: isActive ? '#FFFFFF' : 'rgba(255,255,255,0.85)',
-                      background: isActive ? '#0080C0' : 'transparent',
-                      boxShadow: isActive ? 'inset 3px 0 0 #FFFFFF' : 'none',
+                      color: isActive ? '#FFFFFF' : 'rgba(255,255,255,0.75)',
+                      background: isActive ? '#97876A' : 'transparent',
+                      boxShadow: isActive ? 'inset 3px 0 0 #F5F0E8' : 'none',
                     }}
                   >
                     {label}
@@ -69,14 +69,14 @@ export default function LayoutWithSidebar({
           </div>
         </nav>
 
-        <div className="px-4 py-4 border-t flex items-center justify-center" style={{ borderColor: '#0088CC' }}>
-          <div className="bg-white rounded-lg px-3 py-2">
-            <img src="/rice-cloud-logo.png" alt="RICE CLOUD JAPAN" className="w-[140px] h-auto" />
+        <div className="px-4 py-4 border-t" style={{ borderColor: '#444444' }}>
+          <div className="text-center">
+            <div className="text-[11px] font-bold text-white opacity-60 tracking-widest">M&amp;A ROYAL ADVISORY</div>
           </div>
         </div>
       </aside>
 
-      <div className="ml-[220px] flex-1 flex flex-col min-h-screen bg-[#F0F7FC]">
+      <div className="ml-[220px] flex-1 flex flex-col min-h-screen bg-[#FAF8F5]">
         <main className="flex-1 flex items-center justify-center px-6 py-8">
           <MainContentWidth>{children}</MainContentWidth>
         </main>

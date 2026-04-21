@@ -3,8 +3,8 @@ import '@/styles/globals.css'
 import LayoutWithSidebar from './LayoutWithSidebar'
 
 export const metadata: Metadata = {
-  title: 'RAS — Rice Cloud Article System',
-  description: 'Rice Cloud 記事制作ツール',
+  title: 'MAS — M&A LOYAL Article System',
+  description: 'M&A LOYAL 記事制作ツール',
 }
 
 export default function RootLayout({
@@ -22,7 +22,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#F0F7FC]">
+      <body className="bg-[#FAF8F5]">
         <LayoutWithSidebar>{children}</LayoutWithSidebar>
       </body>
     </html>

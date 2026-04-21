@@ -3,20 +3,20 @@
 @tailwind utilities;
 
 :root {
-  /* Rice Cloud ブランドカラー */
-  --color-primary: #009AE0;
-  --color-primary-hover: #0080C0;
-  --color-primary-light: #E6F5FC;
-  --color-primary-border: #0088CC;
-  --color-navy: #0A2540;
-  --color-navy-light: #163A5F;
-  --color-accent: #00B4D8;
-  --color-red: #E63946;
-  --color-page-bg: #F0F7FC;
+  /* M&A LOYAL ブランドカラー */
+  --color-primary: #97876A;
+  --color-primary-hover: #7A6B52;
+  --color-primary-light: #F5F0E8;
+  --color-primary-border: #B8A483;
+  --color-navy: #222222;
+  --color-navy-light: #444444;
+  --color-accent: #97876A;
+  --color-red: #C0392B;
+  --color-page-bg: #FAF8F5;
   --color-card-bg: #FFFFFF;
-  --color-text-main: #1A1A2E;
-  --color-text-muted: #64748B;
-  --color-border: #D0E3F0;
+  --color-text-main: #222222;
+  --color-text-muted: #808080;
+  --color-border: #E8E0D5;
   --color-success: #16A34A;
 }
 
@@ -27,12 +27,12 @@
 body {
   background-color: var(--color-page-bg);
   color: var(--color-text-main);
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Yu Gothic', 'YuGothic', 'Noto Sans JP', sans-serif;
   font-weight: 400;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Noto Sans JP', sans-serif;
+  font-family: 'Yu Gothic', 'YuGothic', 'Noto Sans JP', sans-serif;
   font-weight: 700;
 }
 

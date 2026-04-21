@@ -41,21 +41,22 @@ export default function LoginPage() {
         className="rounded-2xl border shadow-lg p-8"
         style={{
           backgroundColor: '#fff',
-          borderColor: '#0088CC',
+          borderColor: '#B8A483',
         }}
       >
         <div className="text-center mb-6">
-          <h1 className="text-2xl font-bold" style={{ color: '#009AE0' }}>
-            RAS
+          <div className="text-xs font-bold tracking-widest text-[#97876A] mb-1">M&amp;A ROYAL ADVISORY</div>
+          <h1 className="text-2xl font-bold" style={{ color: '#222222' }}>
+            MAS
           </h1>
-          <p className="text-sm text-[#64748B] mt-1">Rice Cloud Article System</p>
+          <p className="text-sm text-[#808080] mt-1">M&amp;A LOYAL Article System</p>
         </div>
-        <p className="text-sm text-[#475569] text-center mb-6">
+        <p className="text-sm text-[#555555] text-center mb-6">
           メールアドレスとパスワードを入力してください
         </p>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-[#334155] mb-1">
+            <label htmlFor="email" className="block text-sm font-medium text-[#333333] mb-1">
               メールアドレス
             </label>
             <input
@@ -65,12 +66,12 @@ export default function LoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               required
               autoComplete="email"
-              className="w-full px-4 py-2.5 rounded-lg border border-[#cbd5e1] bg-white text-[#0f172a] focus:outline-none focus:ring-2 focus:ring-[#009AE0]"
+              className="w-full px-4 py-2.5 rounded-lg border border-[#D5C9B8] bg-white text-[#222222] focus:outline-none focus:ring-2 focus:ring-[#97876A]"
               placeholder="example@company.com"
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-[#334155] mb-1">
+            <label htmlFor="password" className="block text-sm font-medium text-[#333333] mb-1">
               パスワード
             </label>
             <input
@@ -80,7 +81,7 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               required
               autoComplete="current-password"
-              className="w-full px-4 py-2.5 rounded-lg border border-[#cbd5e1] bg-white text-[#0f172a] focus:outline-none focus:ring-2 focus:ring-[#009AE0]"
+              className="w-full px-4 py-2.5 rounded-lg border border-[#D5C9B8] bg-white text-[#222222] focus:outline-none focus:ring-2 focus:ring-[#97876A]"
               placeholder="••••••••"
             />
           </div>
@@ -91,7 +92,7 @@ export default function LoginPage() {
             type="submit"
             disabled={loading}
             className="w-full py-2.5 rounded-lg font-semibold text-white transition-colors disabled:opacity-50 hover:opacity-90"
-            style={{ backgroundColor: '#009AE0' }}
+            style={{ backgroundColor: '#97876A' }}
           >
             {loading ? '確認中...' : 'ログイン'}
           </button>

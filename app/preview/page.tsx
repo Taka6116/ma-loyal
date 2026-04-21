@@ -9,22 +9,22 @@ import { getSupervisorBlockHtml } from '@/lib/supervisorBlock'
 const DUMMY_ARTICLES = [
   {
     date: '2024.11.15',
-    category: 'ERPの基礎',
-    title: 'ERP導入で失敗しないために！ERPシステムを比較する5つのポイント',
+    category: 'M&Aの基礎',
+    title: 'M&A成功のカギ！中小企業が知っておくべき事業承継の5つのポイント',
   },
   {
     date: '2024.06.28',
-    category: 'ERPの基礎',
-    title: 'ズバリ解説！ERPとは何か、今多くの企業が注目するワケ',
+    category: '売却・譲渡',
+    title: '会社売却の流れをわかりやすく解説！M&Aの基本ステップと注意点',
   },
 ]
 
 const SUPERVISOR_FACE_IMAGE_URL = ''
 
 function getPreviewCtaBannerHtml(): string {
-  return `<div style="text-align:center;margin:40px 0;padding:20px;background:#E6F5FC;border-radius:12px;">
-  <p style="font-size:18px;font-weight:700;color:#0A2540;margin:0 0 12px;">ERP導入・業務改善のご相談はお気軽に</p>
-  <a href="https://www.rice-cloud.info/contact/" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:12px 32px;background:#3EA8D8;color:#fff;border-radius:8px;text-decoration:none;font-weight:700;font-size:16px;">お問い合わせはこちら</a>
+  return `<div style="text-align:center;margin:40px 0;padding:20px;background:#F5F0E8;border-radius:12px;">
+  <p style="font-size:18px;font-weight:700;color:#222222;margin:0 0 12px;">M&Aのご相談はお気軽に</p>
+  <a href="https://ma-la.co.jp/contact/" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:12px 32px;background:#97876A;color:#fff;border-radius:8px;text-decoration:none;font-weight:700;font-size:16px;">お問い合わせはこちら</a>
 </div>`
 }
 
@@ -60,7 +60,7 @@ function insertCtaBannersForPreview(html: string): string {
 function formatContent(content: string): string {
   const supervisorBlock = getSupervisorBlockHtml(SUPERVISOR_FACE_IMAGE_URL)
 
-  const H2_STYLE = "font-size:20px;font-weight:700;margin:48px 0 16px;padding:14px 20px;background:#1a2744;color:#fff;border-radius:4px;font-family:'Noto Sans JP',sans-serif;"
+  const H2_STYLE = "font-size:20px;font-weight:700;margin:48px 0 16px;padding:14px 20px;background:#222222;color:#fff;border-radius:4px;font-family:'Yu Gothic','YuGothic','Noto Sans JP',sans-serif;"
   const H3_STYLE = 'font-size:18px;font-weight:400;margin:32px 0 12px;color:#111;'
   const P_STYLE = 'margin-bottom:1.6em;'
 
@@ -328,13 +328,13 @@ function PreviewContent() {
           left: 220,
           right: 0,
           zIndex: 1000,
-          backgroundColor: '#1e3a5f',
-          color: 'white',
-          padding: '12px 24px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
+        backgroundColor: '#222222',
+        color: 'white',
+        padding: '12px 24px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
@@ -373,7 +373,7 @@ function PreviewContent() {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    backgroundColor: '#3EA8D8',
+                    backgroundColor: '#97876A',
                     border: 'none',
                     color: 'white',
                     padding: '10px 24px',
@@ -411,7 +411,7 @@ function PreviewContent() {
                 type="button"
                 onClick={handlePublish}
                 style={{
-                  backgroundColor: '#e63946',
+                  backgroundColor: '#97876A',
                   border: 'none',
                   color: 'white',
                   padding: '10px 24px',
@@ -432,10 +432,11 @@ function PreviewContent() {
       <div style={{ paddingTop: 56, display: 'flex', gap: 24, alignItems: 'flex-start' }}>
         <div style={{ flex: 1, minWidth: 0 }}>
 
-      {/* ヘッダー（RICE CLOUDサイト再現 — ダークネイビー背景） */}
+      {/* ヘッダー（M&A LOYALサイト再現） */}
       <header
         style={{
-          backgroundColor: '#1a2744',
+          backgroundColor: '#ffffff',
+          borderBottom: '1px solid #E8E0D5',
           padding: '0 24px',
           minHeight: 64,
           display: 'flex',
@@ -448,35 +449,35 @@ function PreviewContent() {
           gap: 16,
         }}
       >
-        <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center' }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/logo-w.webp"
-            alt="株式会社ライスクラウド"
-            style={{ height: 40, width: 'auto', display: 'block', filter: 'brightness(10)' }}
-          />
+        <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 8 }}>
+          <div style={{ fontWeight: 900, fontSize: 16, color: '#222222', letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>
+            M&amp;A ROYAL ADVISORY
+          </div>
+          <div style={{ fontSize: 10, color: '#97876A', fontWeight: 600, letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>
+            M&amp;A・事業承継・売却の仲介
+          </div>
         </div>
 
         <nav
           style={{
             display: 'flex',
-            gap: 24,
+            gap: 20,
             fontSize: 13,
-            color: 'rgba(255,255,255,0.9)',
+            color: '#222222',
             fontWeight: 600,
             flexShrink: 0,
             whiteSpace: 'nowrap',
-            fontFamily: '"Noto Sans JP", sans-serif',
+            fontFamily: "'Yu Gothic', 'YuGothic', sans-serif",
           }}
         >
           {[
             'TOP',
             '会社案内',
-            '導入事例',
+            'M&Aの流れ',
             'サービス',
+            'コラム',
             'お役立ち情報',
-            'NEWS',
-            '採用情報',
+            'お問い合わせ',
           ].map(item => (
             <span key={item} style={{ cursor: 'pointer' }}>
               {item}
@@ -485,13 +486,15 @@ function PreviewContent() {
         </nav>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0 }}>
-          <button
-            type="button"
+          <a
+            href="https://ma-la.co.jp/contact/"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
-              backgroundColor: '#2ecc71',
+              backgroundColor: '#97876A',
               color: 'white',
               padding: '10px 20px',
-              borderRadius: 6,
+              borderRadius: 4,
               border: 'none',
               fontSize: 13,
               fontWeight: 600,
@@ -500,18 +503,19 @@ function PreviewContent() {
               alignItems: 'center',
               gap: 6,
               whiteSpace: 'nowrap',
+              textDecoration: 'none',
             }}
           >
-            お問い合わせ
+            無料相談はこちら
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
-          </button>
+          </a>
         </div>
       </header>
 
-      {/* ファーストビュー（COLUMN / お役立ち情報詳細） */}
-      <section style={{ backgroundColor: '#f5f5f5', padding: '48px 0' }}>
+      {/* ファーストビュー（M&A LOYAL コラム詳細） */}
+      <section style={{ backgroundColor: '#FAF8F5', borderBottom: '1px solid #E8E0D5', padding: '32px 0' }}>
         <div
           style={{
             maxWidth: 1200,
@@ -523,37 +527,36 @@ function PreviewContent() {
             <span
               style={{
                 display: 'block',
-                fontSize: 14,
-                color: '#666',
-                fontWeight: 500,
-                fontFamily: '"Noto Sans JP", sans-serif',
+                fontSize: 11,
+                color: '#97876A',
+                fontWeight: 700,
+                letterSpacing: '0.12em',
+                fontFamily: "'Yu Gothic', 'YuGothic', sans-serif",
               }}
             >
-              お役立ち情報詳細
+              M&amp;A COLUMN
             </span>
             <span
               style={{
                 display: 'block',
-                fontSize: 40,
+                fontSize: 22,
                 fontWeight: 700,
-                color: '#333',
-                fontFamily: 'Roboto, Arial, sans-serif',
-                letterSpacing: '0.05em',
+                color: '#222222',
+                fontFamily: "'Yu Gothic', 'YuGothic', sans-serif",
+                letterSpacing: '0.03em',
                 marginTop: 4,
               }}
             >
-              COLUMN
+              コラム・お役立ち情報
             </span>
           </h1>
           <nav
-            style={{ marginTop: 16, fontSize: 13, color: '#666', fontFamily: '"Noto Sans JP", sans-serif' }}
+            style={{ marginTop: 12, fontSize: 12, color: '#808080', fontFamily: "'Yu Gothic', 'YuGothic', sans-serif" }}
             aria-label="パンくず"
           >
-            <span style={{ color: '#3EA8D8', cursor: 'pointer' }}>トップ</span>
+            <span style={{ color: '#97876A', cursor: 'pointer' }}>トップ</span>
             {' > '}
-            <span style={{ color: '#3EA8D8', cursor: 'pointer' }}>お役立ち情報</span>
-            {' > '}
-            <span style={{ color: '#3EA8D8', cursor: 'pointer' }}>ERPの基礎</span>
+            <span style={{ color: '#97876A', cursor: 'pointer' }}>コラム</span>
             {' > '}
             <span>
               {title.length > 40 ? `${title.slice(0, 40)}...` : title}
@@ -579,7 +582,7 @@ function PreviewContent() {
             <header style={{ marginBottom: 32 }}>
               {/* タグ → タイトル → 日付（実サイト順） */}
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 16 }}>
-                {['ERP', '業務改善', 'データ分析', 'SaaS', '基礎知識'].map(tag => (
+                {['M&A', '事業承継', '売却・譲渡', '中小企業', 'M&Aの基礎'].map(tag => (
                   <span
                     key={tag}
                     style={{
@@ -589,7 +592,7 @@ function PreviewContent() {
                       fontSize: 12,
                       fontWeight: 600,
                       color: 'white',
-                      backgroundColor: '#1a2744',
+                      backgroundColor: '#97876A',
                     }}
                   >
                     {tag}
@@ -645,7 +648,7 @@ function PreviewContent() {
 
             {/* 記事末タグバッジ */}
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginTop: 48, paddingTop: 24, borderTop: '1px solid #e5e5e5' }}>
-              {['ERP', '業務改善', 'データ分析', 'SaaS', '基礎知識'].map(tag => (
+              {['M&A', '事業承継', '売却・譲渡', '中小企業', 'M&Aの基礎'].map(tag => (
                 <span
                   key={tag}
                   style={{
@@ -655,7 +658,7 @@ function PreviewContent() {
                     fontSize: 12,
                     fontWeight: 600,
                     color: 'white',
-                    backgroundColor: '#1a2744',
+                    backgroundColor: '#97876A',
                     cursor: 'pointer',
                   }}
                 >
@@ -716,14 +719,11 @@ function PreviewContent() {
                         borderBottom: '1px solid #e5e5e5',
                       }}
                     >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src="/logo-w.webp"
-                        alt="RICE CLOUD"
-                        style={{ height: 28, width: 'auto', display: 'block', marginBottom: 4 }}
-                      />
-                      <span style={{ fontSize: 9, fontWeight: 600, color: '#3EA8D8', letterSpacing: '0.08em' }}>
-                        RICE CLOUD JAPAN
+                      <span style={{ fontSize: 12, fontWeight: 700, color: '#222222', letterSpacing: '0.05em', display: 'block', marginBottom: 4 }}>
+                        M&amp;A ROYAL ADVISORY
+                      </span>
+                      <span style={{ fontSize: 9, fontWeight: 600, color: '#97876A', letterSpacing: '0.08em' }}>
+                        M&amp;A・事業承継・売却の仲介
                       </span>
                     </div>
                     <div style={{ padding: 16 }}>
@@ -741,21 +741,23 @@ function PreviewContent() {
           <div style={{ width: 260, flexShrink: 0, position: 'sticky', top: 130, fontFamily: '"Noto Sans JP", sans-serif' }}>
             {/* 絞り込み検索 */}
             <div style={{ marginBottom: 32, border: '1px solid #e0e0e0', borderRadius: 4, overflow: 'hidden' }}>
-              <div style={{ backgroundColor: '#1a2744', color: 'white', padding: '12px 16px', fontSize: 14, fontWeight: 700, textAlign: 'center' }}>
+              <div style={{ backgroundColor: '#222222', color: 'white', padding: '12px 16px', fontSize: 14, fontWeight: 700, textAlign: 'center' }}>
                 絞り込み検索
               </div>
               <div style={{ padding: 16 }}>
                 <select
-                  style={{ width: '100%', padding: '8px 10px', fontSize: 13, border: '1px solid #ccc', borderRadius: 4, marginBottom: 16, color: '#333', background: 'white' }}
+                  style={{ width: '100%', padding: '8px 10px', fontSize: 13, border: '1px solid #D5C9B8', borderRadius: 4, marginBottom: 16, color: '#333', background: 'white' }}
                   defaultValue="column01"
                 >
                   <option value="">カテゴリー</option>
-                  <option value="column01">ERPの基礎</option>
+                  <option value="column01">M&Aの基礎</option>
+                  <option value="column02">事業承継</option>
+                  <option value="column03">売却・譲渡</option>
                 </select>
                 <div style={{ fontSize: 13, fontWeight: 700, color: '#333', marginBottom: 8 }}>タグ検索</div>
-                {['ERP', '業務改善', 'データ分析', 'SaaS', '基礎知識'].map(tag => (
+                {['M&A', '事業承継', '売却・譲渡', '中小企業', 'M&Aの基礎'].map(tag => (
                   <label key={tag} style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: '#333', marginBottom: 6, cursor: 'pointer' }}>
-                    <input type="checkbox" style={{ accentColor: '#1a2744' }} readOnly />
+                    <input type="checkbox" style={{ accentColor: '#97876A' }} readOnly />
                     {tag}
                   </label>
                 ))}
@@ -765,7 +767,7 @@ function PreviewContent() {
                     width: '100%',
                     marginTop: 12,
                     padding: '10px 0',
-                    backgroundColor: '#1a2744',
+                    backgroundColor: '#97876A',
                     color: 'white',
                     border: 'none',
                     borderRadius: 4,
@@ -783,11 +785,11 @@ function PreviewContent() {
               <div style={{ fontSize: 14, fontWeight: 700, color: '#333', marginBottom: 12 }}>タグ一覧</div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                 {[
-                  { name: 'ERP', count: 3 },
-                  { name: '業務改善', count: 3 },
-                  { name: 'データ分析', count: 3 },
-                  { name: 'SaaS', count: 3 },
-                  { name: '基礎知識', count: 3 },
+                  { name: 'M&A', count: 5 },
+                  { name: '事業承継', count: 4 },
+                  { name: '売却・譲渡', count: 3 },
+                  { name: '中小企業', count: 3 },
+                  { name: 'M&Aの基礎', count: 2 },
                 ].map(tag => (
                   <span
                     key={tag.name}
@@ -798,7 +800,7 @@ function PreviewContent() {
                       fontSize: 12,
                       fontWeight: 600,
                       color: 'white',
-                      backgroundColor: '#1a2744',
+                      backgroundColor: '#97876A',
                       cursor: 'pointer',
                     }}
                   >
@@ -832,19 +834,14 @@ function PreviewContent() {
           }}
         >
           <div>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/logo-w.webp"
-              alt="株式会社ライスクラウド"
-              style={{ height: 36, width: 'auto', display: 'block', marginBottom: 16, filter: 'brightness(10)' }}
-            />
-            <div style={{ fontSize: 15, fontWeight: 700, marginBottom: 8 }}>
-              株式会社 RICE CLOUD（ライスクラウド）
+            <div style={{ fontSize: 16, fontWeight: 900, marginBottom: 8, letterSpacing: '0.05em', color: '#97876A' }}>
+              M&amp;A ROYAL ADVISORY
             </div>
-            <p style={{ fontSize: 13, opacity: 0.7, lineHeight: 1.8 }}>
-              〒336-0017
-              <br />
-              埼玉県さいたま市南区南浦和2丁目40-1 第２愛興ビル 3階
+            <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 8, color: 'white' }}>
+              株式会社M&amp;Aロイヤルアドバイザリー
+            </div>
+            <p style={{ fontSize: 12, opacity: 0.7, lineHeight: 1.8 }}>
+              M&amp;A・事業承継・売却の仲介
             </p>
           </div>
           <nav
@@ -857,7 +854,7 @@ function PreviewContent() {
               alignItems: 'flex-start',
             }}
           >
-            {['TOP', '会社案内', '導入事例', 'サービス', 'お役立ち情報', 'NEWS', '採用情報', 'お問い合わせ'].map(item => (
+            {['TOP', '会社案内', 'M&Aの流れ', 'サービス', 'コラム', 'お役立ち情報', 'お問い合わせ'].map(item => (
               <span key={item} style={{ cursor: 'pointer' }}>{item}</span>
             ))}
           </nav>
@@ -880,7 +877,7 @@ function PreviewContent() {
             opacity: 0.5,
           }}
         >
-          &copy; RICE CLOUD JAPAN All Rights Reserved.
+          &copy; M&amp;A Royal Advisory All Rights Reserved.
         </p>
       </footer>
         </div>
