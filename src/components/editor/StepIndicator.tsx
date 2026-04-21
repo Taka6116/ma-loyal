@@ -24,13 +24,13 @@ export default function StepIndicator({ currentStep, onStepClick }: StepIndicato
 
         const rowClasses = `
           flex items-center gap-3 px-2 py-2
-          ${isClickable ? 'rounded-lg -mx-1 w-full text-left hover:bg-[#D0E3F0]/70 active:bg-[#D0E3F0] transition-colors' : ''}
+          ${isClickable ? 'rounded-lg -mx-1 w-full text-left hover:bg-[#9b0000]/10 active:bg-[#9b0000]/15 transition-colors' : ''}
         `
 
         const labelClasses = `
           text-xs font-medium whitespace-nowrap
-          ${isActive ? 'text-[#009AE0] font-semibold' : ''}
-          ${isCompleted ? 'text-[#009AE0]' : ''}
+          ${isActive ? 'text-[#9b0000] font-semibold' : ''}
+          ${isCompleted ? 'text-[#9b0000]' : ''}
           ${!isCompleted && !isActive ? 'text-[#64748B]' : ''}
         `
 
@@ -40,9 +40,9 @@ export default function StepIndicator({ currentStep, onStepClick }: StepIndicato
               <div
                 className={`
                   w-8 h-8 rounded-full flex items-center justify-center text-sm font-semibold
-                  ${isCompleted ? 'bg-[#009AE0] text-white' : ''}
-                  ${isActive ? 'bg-[#009AE0] text-white ring-4 ring-[#009AE0]/20' : ''}
-                  ${!isCompleted && !isActive ? 'bg-[#D0E3F0] text-[#64748B]' : ''}
+                  ${isCompleted ? 'bg-[#9b0000] text-white' : ''}
+                  ${isActive ? 'bg-[#9b0000] text-white ring-4 ring-[#9b0000]/20' : ''}
+                  ${!isCompleted && !isActive ? 'bg-[#e8d5d5] text-[#9b0000]' : ''}
                 `}
               >
                 {isCompleted ? (
@@ -63,7 +63,7 @@ export default function StepIndicator({ currentStep, onStepClick }: StepIndicato
                 <div
                   className={`
                     w-[2px] h-10
-                    ${isCompleted ? 'bg-[#009AE0]' : 'bg-[#D0E3F0]'}
+                    ${isCompleted ? 'bg-[#9b0000]' : 'bg-[#e8d5d5]'}
                   `}
                 />
               )}
