@@ -29,15 +29,14 @@ export default function LayoutWithSidebar({
         "
         style={{ backgroundColor: '#222222', borderColor: '#444444' }}
       >
-        <div className="px-4 py-4 border-b flex flex-col items-center justify-center gap-2" style={{ borderColor: '#3A3A3A' }}>
-          <div className="bg-white rounded-lg px-3 py-2 w-full flex items-center justify-center">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/ma-loyal-logo.png"
-              alt="M&A LOYAL ADVISORY"
-              className="h-[70px] w-auto"
-            />
-          </div>
+        <div className="px-3 py-4 border-b flex flex-col items-center justify-center gap-1.5" style={{ borderColor: '#3A3A3A' }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/ma-loyal-logo.png"
+            alt="M&A LOYAL ADVISORY"
+            className="w-[170px] h-auto rounded"
+            style={{ mixBlendMode: 'screen', opacity: 0.95 }}
+          />
           <div
             className="text-[9px] tracking-[0.18em] text-center"
             style={{ color: '#C4A0A6', fontFamily: "'Cormorant Garamond', serif", fontWeight: 600 }}

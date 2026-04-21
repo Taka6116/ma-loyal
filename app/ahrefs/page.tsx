@@ -306,7 +306,7 @@ export default function AhrefsPage() {
         <div>
           <h1 className="text-2xl font-bold text-[#1A1A2E] mb-1">KW分析ダッシュボード</h1>
           <p className="text-sm text-[#64748B]">
-            AhrefsのCSVデータから狙い目キーワードを分析し、記事制作につなげます。
+            市場のKWデータから推奨記事KWを表示しています。
           </p>
         </div>
         <div className="relative flex-shrink-0">
@@ -334,32 +334,26 @@ export default function AhrefsPage() {
         </div>
       )}
 
-      {/* Dataset badges */}
+      {/* Dataset count indicator (simplified) */}
       {index.length > 0 && (
-        <div className="flex flex-wrap gap-2 mb-6">
-          {index.map(m => (
-            <span
-              key={m.id}
-              className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium border ${
-                m.type === 'organic'
-                  ? 'bg-purple-50 text-purple-700 border-purple-200'
-                  : 'bg-blue-50 text-blue-700 border-blue-200'
-              }`}
-            >
-              <span className="font-bold">{m.type === 'organic' ? '競合' : 'KW'}</span>
-              <span className="truncate max-w-[200px]">{m.fileName.replace(/\.csv$/i, '')}</span>
-              <span>{fmtNum(m.rowCount)}件</span>
-              <span>{fmtDate(m.uploadedAt)}</span>
+        <div className="flex items-center gap-3 mb-4">
+          <span className="text-xs text-[#808080]">
+            データセット {index.length}件読み込み済み
+          </span>
+          <div className="flex gap-1">
+            {index.map(m => (
               <button
+                key={m.id}
                 type="button"
-                onClick={e => { e.stopPropagation(); handleDeleteDataset(m.id) }}
-                className="ml-0.5 hover:text-red-600 transition-colors"
-                title="削除"
+                onClick={() => handleDeleteDataset(m.id)}
+                className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-medium border border-[#E8D5D8] text-[#8B1A2A] bg-[#FDF5F6] hover:bg-[#8B1A2A] hover:text-white transition-colors"
+                title={`${m.fileName} を削除`}
               >
-                <X size={14} />
+                {m.type === 'organic' ? '競合' : 'KW'}
+                <X size={10} />
               </button>
-            </span>
-          ))}
+            ))}
+          </div>
         </div>
       )}
 
@@ -667,12 +661,7 @@ function TrendBadge({ trend }: { trend: 'up' | 'down' | 'stable' }) {
       DOWN
     </span>
   )
-  return (
-    <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded text-xs font-medium bg-gray-50 text-gray-400 border border-gray-200">
-      <Minus size={11} />
-      −
-    </span>
-  )
+  return <span className="text-[#C4A0A6] text-xs select-none">—</span>
 }
 
 function TrendsTableView({ trends }: { trends: TrendKeyword[] }) {
