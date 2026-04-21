@@ -29,11 +29,14 @@ export default function LayoutWithSidebar({
         "
         style={{ backgroundColor: '#222222', borderColor: '#444444' }}
       >
-        <div className="px-5 py-4 border-b" style={{ borderColor: '#444444' }}>
-          <div className="text-[20px] font-bold tracking-wide leading-tight">MAS</div>
-          <div className="text-[11px] text-white opacity-80 mt-0.5" style={{ letterSpacing: '0.04em' }}>
-            M&amp;A LOYAL Article System
-          </div>
+        <div className="px-4 py-4 border-b flex items-center justify-center" style={{ borderColor: '#444444' }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/ma-loyal-logo.png"
+            alt="M&A LOYAL ADVISORY"
+            className="w-[160px] h-auto"
+            style={{ filter: 'brightness(0) invert(1) opacity(0.9)' }}
+          />
         </div>
 
         <nav className="flex-1 px-3 py-4 text-sm space-y-6">
@@ -69,9 +72,10 @@ export default function LayoutWithSidebar({
           </div>
         </nav>
 
-        <div className="px-4 py-4 border-t" style={{ borderColor: '#444444' }}>
+        <div className="px-4 py-3 border-t" style={{ borderColor: '#444444' }}>
           <div className="text-center">
-            <div className="text-[11px] font-bold text-white opacity-60 tracking-widest">M&amp;A ROYAL ADVISORY</div>
+            <div className="text-[10px] font-bold text-white opacity-50 tracking-widest">MAS</div>
+            <div className="text-[9px] text-white opacity-40 tracking-wide mt-0.5">M&amp;A LOYAL Article System</div>
           </div>
         </div>
       </aside>
