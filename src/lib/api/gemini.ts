@@ -17,16 +17,16 @@ const GEMINI_MODELS = ['gemini-2.5-flash', 'gemini-1.5-flash'] as const
  *    Claude 3 Haiku はオンデマンド対応のまま残っているため最終フォールバックに使う。
  */
 async function callClaudeOnBedrock(prompt: string): Promise<string> {
-  const accessKeyId = process.env.AWS_ACCESS_KEY_ID
-  const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY
+  const accessKeyId = process.env.AWS_ACCESS_KEY_ID?.trim()
+  const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY?.trim()
 
   if (!accessKeyId || !secretAccessKey) {
     throw new Error('[Bedrock] AWS認証情報が未設定です（AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY）')
   }
 
   // Bedrockは us-east-1 を基点にするとモデル可用性が最も高い
-  // S3とリージョンが違っても問題なし（テキスト生成のみ）
-  const bedrockRegion = process.env.BEDROCK_REGION || 'us-east-1'
+  // 環境変数から読むが、スペース混入を防ぐため trim
+  const bedrockRegion = (process.env.BEDROCK_REGION || 'us-east-1').trim()
 
   const client = new BedrockRuntimeClient({
     region: bedrockRegion,
