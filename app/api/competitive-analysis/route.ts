@@ -6,6 +6,7 @@ import {
   fetchApiUsage,
   generateStrategy,
   loadCompetitiveDocument,
+  loadCompetitiveHistory,
   loadCompetitorConfig,
   refreshCompetitorKeywords,
   saveCompetitorConfig,
@@ -17,12 +18,13 @@ export const maxDuration = 300
 
 export async function GET() {
   try {
-    const [config, document, usage] = await Promise.all([
+    const [config, document, history, usage] = await Promise.all([
       loadCompetitorConfig(),
       loadCompetitiveDocument(),
+      loadCompetitiveHistory(),
       fetchApiUsage(),
     ])
-    return NextResponse.json({ config, document, opportunities: buildKeywordOpportunities(config, document), usage, defaults: DEFAULT_COMPETITORS })
+    return NextResponse.json({ config, document, history, opportunities: buildKeywordOpportunities(config, document), usage, defaults: DEFAULT_COMPETITORS })
   } catch (error) {
     console.error('[competitive-analysis GET]', error)
     return NextResponse.json({ error: '競合分析データの取得に失敗しました' }, { status: 500 })
@@ -43,7 +45,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ result: await refreshCompetitorKeywords(body.competitorId) })
     }
     if (body.action === 'generate-strategy') {
-      return NextResponse.json({ actions: await generateStrategy() })
+      return NextResponse.json({ report: await generateStrategy() })
     }
     return NextResponse.json({ error: '実行内容が不正です' }, { status: 400 })
   } catch (error) {
