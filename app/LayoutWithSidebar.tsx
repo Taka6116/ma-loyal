@@ -58,6 +58,7 @@ export default function LayoutWithSidebar({
                 { href: '/content-analysis', label: 'コンテンツ分析' },
                 { href: '/competitor-analysis', label: '競合分析' },
                 { href: '/comprehensive-analysis', label: '総合分析' },
+                { href: '/site-audit', label: 'サイト診断' },
                 { href: '/ahrefs', label: 'KW分析（データ）' },
                 { href: '/notice', label: '注意書き' },
               ].map(({ href, label }) => {

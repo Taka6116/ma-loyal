@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
-import { Upload, X, Search, Sparkles, Globe, TrendingUp, TrendingDown, Minus } from 'lucide-react'
+import { Upload, X, Search, FilePenLine, Globe, TrendingUp, TrendingDown, Minus } from 'lucide-react'
 import type { AhrefsDataset, AhrefsDatasetType } from '@/lib/ahrefsCsvParser'
 import { analyzeKeywords, detectTrends, getCategoryCounts, mergeAndAnalyze, type ScoredKeyword, type TrendKeyword, type CategoryCount, type PriorityLevel } from '@/lib/ahrefsAnalyzer'
 
@@ -598,7 +598,7 @@ export default function AhrefsPage() {
                               onMouseEnter={e => (e.currentTarget.style.backgroundColor = kw.priority === 3 ? '#6E1221' : '#943848')}
                               onMouseLeave={e => (e.currentTarget.style.backgroundColor = kw.priority === 3 ? '#8B1A2A' : '#B5485A')}
                             >
-                              <Sparkles size={12} />
+                              <FilePenLine size={12} />
                               記事作成
                             </button>
                           </td>

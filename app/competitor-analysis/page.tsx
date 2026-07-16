@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useState } from 'react'
-import { BarChart3, Building2, CheckCircle2, Crosshair, ExternalLink, History, Lightbulb, Loader2, RefreshCw, Search, Sparkles, Target } from 'lucide-react'
+import { BarChart3, Building2, CheckCircle2, Crosshair, ExternalLink, History, Lightbulb, Loader2, RefreshCw, Search, Target } from 'lucide-react'
 
 type Tab = 'competitors' | 'comparison' | 'strategy'
 
@@ -249,6 +249,10 @@ function CompetitorsTab({
               <div className="mt-4 space-y-2.5">
                 {axes.map(axis => <div key={axis.key}><p className="text-[11px] font-bold text-[#64748B]">{axis.label}</p><p className="text-xs leading-relaxed text-[#222222]">{result?.axes?.[axis.key]?.[0]?.text ?? '公式ページから未確認'}</p></div>)}
               </div>
+              {result?.keywords && result.keywords.length > 0 && <div className="mt-4 rounded-lg border border-[#E8D5D8] bg-[#FAF8F5] p-3">
+                <p className="mb-2 flex items-center gap-1 text-[11px] font-bold text-[#6B4C50]"><BarChart3 size={13} />取得済みKW（上位5件）</p>
+                <div className="space-y-1.5">{result.keywords.slice(0, 5).map(keyword => <div key={keyword.keyword} className="flex items-center justify-between gap-2 text-[11px]"><span className="min-w-0 truncate font-semibold text-[#222222]">{keyword.keyword}</span><span className="shrink-0 text-[#64748B]">{keyword.position != null ? `${keyword.position}位` : '順位未取得'} / Vol {keyword.volume.toLocaleString()}</span></div>)}</div>
+              </div>}
               <p className="mt-3 text-[10px] text-[#94A3B8]">確認: {result?.updatedAt ? new Date(result.updatedAt).toLocaleString('ja-JP') : '未実行'} / Tier 1: 公式サイト</p>
               <div className="mt-4 flex gap-2">
                 <RunButton label={result?.axes ? '再収集' : '公式情報を収集'} active={running === `analyze-competitor:${competitor.id}`} disabled={historical || !!running} onClick={() => run('analyze-competitor', competitor.id)} />
@@ -263,6 +267,7 @@ function CompetitorsTab({
 }
 
 function ComparisonTab({ data }: { data: Data | null }) {
+  const hasCompetitorKeywords = Boolean(data?.config.some(competitor => (data.document.competitors[competitor.id]?.keywords?.length ?? 0) > 0))
   return (
     <div className="space-y-6">
       <div className="rounded-2xl border border-[#E8D5D8] bg-gradient-to-r from-[#FDF5F6] to-[#F5F0E8] p-5"><p className="font-bold text-[#222222]">第2段階: 競合の強みと検索機会</p><p className="mt-1 text-xs text-[#64748B]">競合公式サイトの観測事実と、Ahrefsのドメイン別KWを自社データと照合します。</p></div>
@@ -275,7 +280,7 @@ function ComparisonTab({ data }: { data: Data | null }) {
       <section className="rounded-xl border border-[#E8D5D8] bg-white p-5">
         <h2 className="mb-1 flex items-center gap-2 font-bold text-[#222222]"><Search size={18} className="text-[#8B1A2A]" />検索KWの機会</h2>
         <p className="mb-4 text-xs text-[#64748B]">競合が30位以内で、自社が未露出または20位以下のキーワードです。</p>
-        {data?.opportunities.length ? <div className="overflow-x-auto"><table className="w-full min-w-[650px] text-sm"><thead><tr className="border-b border-[#E8D5D8] text-left text-xs text-[#64748B]"><th className="p-2">キーワード</th><th className="p-2 text-right">Vol</th><th className="p-2">競合</th><th className="p-2">自社</th><th className="p-2">機会</th></tr></thead><tbody>{data.opportunities.slice(0, 20).map(item => <tr key={item.keyword} className="border-b border-[#E8D5D8]"><td className="p-2 font-bold text-[#222222]">{item.keyword}</td><td className="p-2 text-right">{item.volume.toLocaleString()}</td><td className="p-2 text-xs">{item.competitors.map(c => c.name).join('・')}</td><td className="p-2">{item.selfPosition ? `${item.selfPosition}位` : '未露出'}</td><td className="p-2"><span className="rounded bg-[#FDF5F6] px-2 py-1 text-xs font-bold text-[#8B1A2A]">{item.opportunity === 'gap' ? '新規獲得' : '順位改善'}</span></td></tr>)}</tbody></table></div> : <p className="py-6 text-center text-sm text-[#64748B]">競合一覧からAhrefs KWを取得すると表示されます。</p>}
+        {data?.opportunities.length ? <div className="overflow-x-auto"><table className="w-full min-w-[650px] text-sm"><thead><tr className="border-b border-[#E8D5D8] text-left text-xs text-[#64748B]"><th className="p-2">キーワード</th><th className="p-2 text-right">Vol</th><th className="p-2">競合</th><th className="p-2">自社</th><th className="p-2">機会</th></tr></thead><tbody>{data.opportunities.slice(0, 20).map(item => <tr key={item.keyword} className="border-b border-[#E8D5D8]"><td className="p-2 font-bold text-[#222222]">{item.keyword}</td><td className="p-2 text-right">{item.volume.toLocaleString()}</td><td className="p-2 text-xs">{item.competitors.map(c => c.name).join('・')}</td><td className="p-2">{item.selfPosition ? `${item.selfPosition}位` : '未露出'}</td><td className="p-2"><span className="rounded bg-[#FDF5F6] px-2 py-1 text-xs font-bold text-[#8B1A2A]">{item.opportunity === 'gap' ? '新規獲得' : '順位改善'}</span></td></tr>)}</tbody></table></div> : <p className="py-6 text-center text-sm text-[#64748B]">{hasCompetitorKeywords ? '取得済みKWに、現在の抽出条件に合う機会はありません。' : '競合一覧で「Ahrefs KWを取得」を実行すると表示されます。'}</p>}
       </section>
     </div>
   )
@@ -289,7 +294,7 @@ function StrategyTab({ data, running, run, historical }: { data: Data | null; ru
         <div><h2 className="flex items-center gap-2 font-bold text-[#222222]"><Lightbulb size={19} className="text-[#8B1A2A]" />第3段階: M&amp;Aロイヤルの戦略・施策へ翻訳</h2><p className="mt-1 text-xs text-[#64748B]">競合の観測事実と検索機会を統合し、差別化機会と実行順を提案します。</p></div>
         <RunButton label={report ? '戦略を再生成' : '戦略・施策を生成'} active={running === 'generate-strategy:'} disabled={historical || !!running} onClick={() => run('generate-strategy')} />
       </section>
-      {!report ? <div className="rounded-xl border border-dashed border-[#E8D5D8] bg-white py-14 text-center"><Sparkles className="mx-auto mb-3 text-[#C4A0A6]" size={34} /><p className="text-sm text-[#64748B]">競合情報とKWを同期後、「戦略・施策を生成」を実行してください。</p></div> : <>
+      {!report ? <div className="rounded-xl border border-dashed border-[#E8D5D8] bg-white py-14 text-center"><BarChart3 className="mx-auto mb-3 text-[#C4A0A6]" size={34} /><p className="text-sm text-[#64748B]">競合情報とKWを同期後、「戦略・施策を生成」を実行してください。</p></div> : <>
         <section className="rounded-xl border border-[#E8D5D8] bg-white p-6"><p className="text-xs font-bold text-[#8B1A2A]">結論: M&amp;Aロイヤルが取るべき方向</p><p className="mt-2 text-sm leading-relaxed text-[#222222]">{report.summary}</p></section>
         <div className="grid gap-4 lg:grid-cols-2">
           <BulletCard title="観測事実" items={report.observedFacts} />

@@ -257,11 +257,19 @@ export async function refreshCompetitorKeywords(competitorId: string): Promise<C
   const competitor = config.find(item => item.id === competitorId)
   if (!competitor) throw new Error('指定された競合が見つかりません')
   const now = new Date().toISOString()
-  const [keywords, ownRows] = await Promise.all([
-    fetchOrganicKeywords({ target: competitor.domain, limit: 500 }),
-    fetchOrganicKeywords({ limit: 500 }),
-  ])
   const document = await loadCompetitiveDocument()
+  const keywords = await fetchOrganicKeywords({ target: competitor.domain, limit: 500 })
+  if (keywords.length === 0) throw new Error(`${competitor.name}のキーワードが取得できませんでした`)
+
+  if (document.selfKeywords.length === 0) {
+    try {
+      const ownRows = await fetchOrganicKeywords({ limit: 500 })
+      document.selfKeywords = toKeywords(ownRows)
+      document.selfKeywordUpdatedAt = now
+    } catch (error) {
+      console.warn('[CompetitiveAnalysis] 自社KWの取得に失敗しました:', error)
+    }
+  }
   const previous = document.competitors[competitorId]
   const result: CompetitorResult = {
     competitorId,
@@ -271,8 +279,6 @@ export async function refreshCompetitorKeywords(competitorId: string): Promise<C
     keywordUpdatedAt: now,
   }
   document.competitors[competitorId] = result
-  document.selfKeywords = toKeywords(ownRows)
-  document.selfKeywordUpdatedAt = now
   document.updatedAt = now
   await saveDocument(document)
   return result
@@ -287,7 +293,8 @@ export function buildKeywordOpportunities(config: CompetitorConfig[], document: 
   const opportunities = new Map<string, KeywordOpportunity>()
   for (const competitor of config) {
     for (const keyword of document.competitors[competitor.id]?.keywords ?? []) {
-      if ((keyword.position ?? 999) > 30 || keyword.volume < 20) continue
+      if (keyword.position !== null && keyword.position > 30) continue
+      if (keyword.volume < 20) continue
       const key = normalized(keyword.keyword)
       const own = self.get(key)
       const opportunity = !own ? 'gap' : (own.position ?? 999) > 20 ? 'weak' : null

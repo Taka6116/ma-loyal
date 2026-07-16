@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Sparkles } from 'lucide-react'
+import { FilePenLine } from 'lucide-react'
 
 const STEPS = [
   { label: '記事を読み込んでいます',      detail: '文章構造・段落・キーワードを解析中...' },
@@ -86,7 +86,7 @@ export default function GeminiLoadingCard() {
             className="absolute inset-4 rounded-full flex items-center justify-center"
             style={{ background: '#E6F5FC' }}
           >
-            <Sparkles size={20} style={{ color: '#009AE0' }} />
+            <FilePenLine size={20} style={{ color: '#009AE0' }} />
           </div>
         </div>
 

@@ -9,7 +9,7 @@ import { SavedKeyword, getAllKeywords } from '@/lib/keywordStorage'
 import StepIndicator from './StepIndicator'
 import Card from '@/components/ui/Card'
 import Button from '@/components/ui/Button'
-import { ArrowRight, Trash2, Sparkles, ChevronDown, Check } from 'lucide-react'
+import { ArrowRight, Trash2, FilePenLine, ChevronDown, Check } from 'lucide-react'
 
 interface ArticleInputProps {
   article: ArticleData
@@ -312,7 +312,7 @@ export default function ArticleInput({
                     <span className="font-bold text-base">記事を作成中...</span>
                   ) : (
                     <>
-                      <Sparkles size={18} className="mr-2" />
+                      <FilePenLine size={18} className="mr-2" />
                       <span className="font-bold text-base">記事作成</span>
                     </>
                   )}
@@ -503,7 +503,7 @@ function GeneratingLoader({ step }: { step: string }) {
               boxShadow: '0 1px 2px rgba(15, 23, 42, 0.06)',
             }}
           >
-            <Sparkles
+            <FilePenLine
               className={`w-5 h-5 text-[#0A2540] ${reduceMotion ? '' : 'motion-safe:opacity-90 motion-safe:animate-pulse'}`}
               aria-hidden
             />

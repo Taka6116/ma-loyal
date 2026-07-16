@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { ArrowRight, ClipboardCheck, RefreshCw, Sparkles, Target } from 'lucide-react'
+import { ArrowRight, ClipboardCheck, FileText, RefreshCw, Target } from 'lucide-react'
 import type { AhrefsDataset } from '@/lib/ahrefsCsvParser'
 import { getKeywordData } from '@/lib/analysisDashboard'
 
@@ -73,7 +73,7 @@ export default function ComprehensiveAnalysisPage() {
         </div>
       ) : (
         <div className="space-y-6">
-          <Recommendation title="優先して記事化するキーワード" icon={<Sparkles size={19} />} description="検索ボリューム、難易度、需要トレンドをもとに優先度が高い順に表示します。">
+          <Recommendation title="優先して記事化するキーワード" icon={<FileText size={19} />} description="検索ボリューム、難易度、需要トレンドをもとに優先度が高い順に表示します。">
             <KeywordList keywords={topKeywords} showCategory />
           </Recommendation>
 
