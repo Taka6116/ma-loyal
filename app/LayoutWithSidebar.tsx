@@ -55,7 +55,10 @@ export default function LayoutWithSidebar({
                 { href: '/schedule', label: '投稿スケジュール' },
                 { href: '/prompts', label: 'プロンプト' },
                 { href: '/keywords', label: 'キーワード' },
-                { href: '/ahrefs', label: 'KW分析' },
+                { href: '/content-analysis', label: 'コンテンツ分析' },
+                { href: '/competitor-analysis', label: '競合分析' },
+                { href: '/comprehensive-analysis', label: '総合分析' },
+                { href: '/ahrefs', label: 'KW分析（データ）' },
                 { href: '/notice', label: '注意書き' },
               ].map(({ href, label }) => {
                 const isActive = pathname === href || pathname.startsWith(href + '/')

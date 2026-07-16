@@ -2,11 +2,13 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { Eye, EyeOff } from 'lucide-react'
 
 export default function LoginPage() {
   const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -74,16 +76,27 @@ export default function LoginPage() {
             <label htmlFor="password" className="block text-sm font-medium text-[#333333] mb-1">
               パスワード
             </label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              autoComplete="current-password"
-              className="w-full px-4 py-2.5 rounded-lg border border-[#D5C9B8] bg-white text-[#222222] focus:outline-none focus:ring-2 focus:ring-[#97876A]"
-              placeholder="••••••••"
-            />
+            <div className="relative">
+              <input
+                id="password"
+                type={isPasswordVisible ? 'text' : 'password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                autoComplete="current-password"
+                className="w-full px-4 py-2.5 pr-12 rounded-lg border border-[#D5C9B8] bg-white text-[#222222] focus:outline-none focus:ring-2 focus:ring-[#97876A]"
+                placeholder="••••••••"
+              />
+              <button
+                type="button"
+                onClick={() => setIsPasswordVisible((visible) => !visible)}
+                className="absolute inset-y-0 right-0 flex items-center px-3 text-[#97876A] hover:text-[#6F614C] focus:outline-none focus:ring-2 focus:ring-[#97876A] focus:ring-inset rounded-r-lg"
+                aria-label={isPasswordVisible ? 'パスワードを非表示にする' : 'パスワードを表示する'}
+                aria-pressed={isPasswordVisible}
+              >
+                {isPasswordVisible ? <EyeOff size={20} aria-hidden="true" /> : <Eye size={20} aria-hidden="true" />}
+              </button>
+            </div>
           </div>
           {error && (
             <p className="text-sm text-red-600 bg-red-50 rounded-lg px-3 py-2">{error}</p>
