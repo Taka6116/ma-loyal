@@ -164,6 +164,7 @@ export default function AhrefsPage() {
   const [index, setIndex] = useState<DatasetMeta[]>([])
   const [loading, setLoading] = useState(true)
   const [uploading, setUploading] = useState(false)
+  const [apiSyncing, setApiSyncing] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [dragOver, setDragOver] = useState(false)
 
@@ -218,6 +219,21 @@ export default function AhrefsPage() {
       await fetchData()
     } catch (e) {
       setError(e instanceof Error ? e.message : '削除に失敗しました')
+    }
+  }, [fetchData])
+
+  const handleApiSync = useCallback(async () => {
+    setApiSyncing(true)
+    setError(null)
+    try {
+      const res = await fetch('/api/ahrefs/fetch', { method: 'POST' })
+      const json = await res.json()
+      if (!res.ok) throw new Error(json.error || 'Ahrefs API同期に失敗しました')
+      await fetchData()
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Ahrefs API同期に失敗しました')
+    } finally {
+      setApiSyncing(false)
     }
   }, [fetchData])
 
@@ -309,21 +325,32 @@ export default function AhrefsPage() {
             市場のKWデータから推奨記事KWを表示しています。
           </p>
         </div>
-        <div className="relative flex-shrink-0">
-          <input
-            type="file"
-            accept=".csv,.tsv"
-            className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-            onChange={e => { handleUpload(e.target.files); e.target.value = '' }}
-            disabled={uploading}
-          />
+        <div className="flex flex-wrap justify-end gap-2 flex-shrink-0">
           <button
             type="button"
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border-2 border-dashed border-[#E8D5D8] bg-white hover:border-[#8B1A2A] hover:bg-[#FDF5F6] transition-colors text-sm font-medium text-[#6B4C50] whitespace-nowrap"
+            onClick={() => void handleApiSync()}
+            disabled={apiSyncing}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#8B1A2A] hover:opacity-90 transition-opacity text-sm font-semibold text-white whitespace-nowrap disabled:opacity-50"
           >
-            <Upload size={16} className="text-[#94A3B8]" />
-            {uploading ? 'アップロード中...' : 'CSVインポート'}
+            <Globe size={16} />
+            {apiSyncing ? 'API同期中...' : 'Ahrefs API同期'}
           </button>
+          <div className="relative">
+            <input
+              type="file"
+              accept=".csv,.tsv"
+              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+              onChange={e => { handleUpload(e.target.files); e.target.value = '' }}
+              disabled={uploading}
+            />
+            <button
+              type="button"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border-2 border-dashed border-[#E8D5D8] bg-white hover:border-[#8B1A2A] hover:bg-[#FDF5F6] transition-colors text-sm font-medium text-[#6B4C50] whitespace-nowrap"
+            >
+              <Upload size={16} className="text-[#94A3B8]" />
+              {uploading ? 'アップロード中...' : 'CSVインポート'}
+            </button>
+          </div>
         </div>
       </div>
 
